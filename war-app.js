@@ -103,11 +103,13 @@ console.log(computerHand)
   const playGame = () => {
     //select flip button and store in a variable
     const flipBtn = document.querySelector(".match button")
-    const card = document.querySelector(".card")
+    const playerCard = document.querySelector(".player-card")
+    const computerCard = document.querySelector(".computer-card")
 
     //create event listener for flipBtn
     flipBtn.addEventListener("click", () => {
-      card.classList.toggle("active")
+      playerCard.classList.toggle("active")
+      computerCard.classList.toggle("active")
     })
   }
 
