@@ -8,7 +8,10 @@
 // Player and Computer start with an array of 26 cards each ✔
 
 //------GAMEPLAY--------
-
+//On button click, flip each card over
+//Compare value of each card, card with higher value wins
+//Dynamically update score (+1, -1) after each round
+//Add both cards to the array of the winner (push or unshift??)
 
 
 
