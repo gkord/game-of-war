@@ -1,16 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="styles/styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="styles/styles.css" />
     <title>War</title>
-</head>
-<body>
-    <div class="display">
-        
-    </div>
+  </head>
+  <body>
+    <section class="game">
+      <div class="score fadeOut">
+        <div class="player-score">
+          <h2>Player</h2>
+          <p>26</p>
+        </div>
+
+        <div class="computer-score">
+          <h2>Computer</h2>
+          <p>26</p>
+        </div>
+      </div>
+
+      <div class="intro">
+        <h1>Game of War</h1>
+        <button>Click to Play</button>
+      </div>
+
+      <div class="match fadeOut">
+          <div class="player-card">
+            <img src="./assets/card.png" alt="back of red playing card">
+          </div>
+          <div class="computer-card">
+            <img src="./assets/card.png" alt="back of red playing card">
+          </div>
+      </div>
+    </section>
     <script src="war-app.js"></script>
-</body>
+  </body>
 </html>

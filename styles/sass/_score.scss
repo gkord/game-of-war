@@ -1,0 +1,17 @@
+.score {
+  color: $offWhite;
+  height: 20vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 40px;
+}
+
+.player-score, .computer-score {
+  height: 120px;
+  width: 180px;
+  background: url(../assets/chalkboard.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 5px solid #EDC170;
+}

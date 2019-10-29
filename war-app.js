@@ -1,8 +1,13 @@
 //Game of War
+
+//------SETUP-----------
 //Create a class of Card ✔
 //Create a class of Deck ✔
 //Create a function that shuffles the deck of cards into random order ✔
 //Create a function that splits the deck in half ✔
+// Player and Computer start with an array of 26 cards each ✔
+
+//------GAMEPLAY--------
 
 
 
@@ -69,3 +74,24 @@ let computerHand = deck.deal()
 
 console.log(playerHand)
 console.log(computerHand)
+
+  //start our game
+  const startGame = () => {
+    //select intro button and store in a variable
+    const playBtn = document.querySelector(".intro button");
+    //select intro screen and store in a variable
+    const introScreen = document.querySelector(".intro");
+    //select score area and store in a variable
+    const scoreBoard  = document.querySelector(".score")
+    //select match screen and store in a variable
+    const matchScreen = document.querySelector(".match");
+
+    //create event listener for playBtn
+    playBtn.addEventListener("click", () => {
+      introScreen.classList.add("fadeOut");
+      matchScreen.classList.add("fadeIn");
+      scoreBoard.classList.add("fadeIn");
+    });
+  };
+
+  startGame();
