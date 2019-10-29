@@ -4,11 +4,4 @@
 @import './intro';
 @import './score';
 @import './match';
-
-img {
-  width: 100%;
-}
-
-.player-card, .computer-card {
-  width: 25%;
-}
+@import './card';

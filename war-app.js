@@ -98,3 +98,17 @@ console.log(computerHand)
   };
 
   startGame();
+
+  //play our game
+  const playGame = () => {
+    //select flip button and store in a variable
+    const flipBtn = document.querySelector(".match button")
+    const card = document.querySelector(".card")
+
+    //create event listener for flipBtn
+    flipBtn.addEventListener("click", () => {
+      card.classList.toggle("active")
+    })
+  }
+
+  playGame();
