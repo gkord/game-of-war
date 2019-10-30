@@ -5,10 +5,14 @@
 //Create a class of Deck ✔
 //Create a function that shuffles the deck of cards into random order ✔
 //Create a function that splits the deck in half ✔
-// Player and Computer start with an array of 26 cards each ✔
+//Player and Computer start with an array of 26 cards each ✔
+
+//------RENDER DECK TO THE DOM-----
+//Create a function that checks for suit and displays appropriate suit image on card ✔
+//Within function also render the card value to the card
 
 //------GAMEPLAY--------
-//On button click, flip each card over
+//On button click, flip each card over ✔
 //Compare value of each card, card with higher value wins
 //Dynamically update score (+1, -1) after each round
 //Add both cards to the array of the winner (push or unshift??)
@@ -99,6 +103,34 @@ console.log(computerHand)
 
   startGame();
 
+  //function that displays suit and value in playerHand array to card
+  const createPlayerCard = () => {
+    document.querySelector(".player-card .card-value p").textContent = playerHand[0].value;
+    if (playerHand[0].suit === "Spades") {
+      document.querySelector(".player-card .spades").classList.add("show");
+    } else if (playerHand[0].suit === "Clubs") {
+      document.querySelector(".player-card .clubs").classList.add("show");
+    } else if (playerHand[0].suit === "Hearts") {
+      document.querySelector(".player-card .hearts").classList.add("show");
+    } else if (playerHand[0].suit === "Diamonds") {
+      document.querySelector(".player-card .diamonds").classList.add("show");
+    }
+  }
+
+  //function that displays suit and value in playerHand array to card
+    const createComputerCard = () => {
+      document.querySelector('.computer-card .card-value p').textContent = computerHand[0].value
+      if (computerHand[0].suit === "Spades") {
+        document.querySelector(".computer-card .spades").classList.add("show");
+      } else if (computerHand[0].suit === "Clubs") {
+        document.querySelector(".computer-card .clubs").classList.add("show");
+      } else if (computerHand[0].suit === "Hearts") {
+        document.querySelector(".computer-card .hearts").classList.add("show");
+      } else if (computerHand[0].suit === "Diamonds") {
+        document.querySelector(".computer-card .diamonds").classList.add("show");
+      }
+    };
+
   //play our game
   const playGame = () => {
     //select flip button and store in a variable
@@ -108,6 +140,8 @@ console.log(computerHand)
 
     //create event listener for flipBtn
     flipBtn.addEventListener("click", () => {
+      createPlayerCard();
+      createComputerCard();
       playerCard.classList.toggle("active")
       computerCard.classList.toggle("active")
     })
