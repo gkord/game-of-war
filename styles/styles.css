@@ -183,6 +183,12 @@ html {
   font-size: 62.5%;
 }
 
+.wrapper {
+  max-width: 800px;
+  width: 90%;
+  margin: 0 auto;
+}
+
 section {
   height: 100vh;
   background-color: #9b8474;
@@ -262,12 +268,15 @@ div.fadeIn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   padding-top: 40px;
+  -webkit-transition: opacity 0.5s ease 0.5s;
+  transition: opacity 0.5s ease 0.5s;
 }
 
 .player-score, .computer-score {
@@ -300,6 +309,31 @@ div.fadeIn {
           align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+}
+
+.center {
+  height: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.winner p {
+  color: #e0e0e0;
+  font-size: 2.5rem;
+  padding-top: 50px;
+  margin: 0;
+  min-width: 180px;
 }
 
 .card-img {

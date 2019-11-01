@@ -1,6 +1,12 @@
 html {
   font-size: 62.5%;
 }
+
+.wrapper {
+  max-width: 800px;
+  width: 90%;
+  margin: 0 auto;
+}
 section {
   height: 100vh;
   background-color: $tan;

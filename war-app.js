@@ -9,11 +9,11 @@
 
 //------RENDER DECK TO THE DOM-----
 //Create a function that checks for suit and displays appropriate suit image on card ✔
-//Within function also render the card value to the card
+//Within function also render the card value to the card ✔
 
 //------GAMEPLAY--------
 //On button click, flip each card over ✔
-//Compare value of each card, card with higher value wins (almost done)
+//Compare value of each card, card with higher value wins ✔
 //Dynamically update score (+1, -1) after each round ✔
 //Add both cards to the array of the winner (push or unshift??)
 
@@ -100,11 +100,12 @@ const startGame = () => {
 
 startGame();
 
-let pScore = 26
-let cScore = 26
+let pScore = 26;
+let cScore = 26;
 
 //function that displays suit and value in playerHand array to card
 const createPlayerCard = () => {
+  //converts face card number values into name to append ("A","K","Q","J")
   if (playerHand[0].value === 11) {
     document.querySelector(".player-card .card-value p").textContent = "J";
   } else if (playerHand[0].value === 12) {
@@ -113,24 +114,37 @@ const createPlayerCard = () => {
     document.querySelector(".player-card .card-value p").textContent = "K";
   } else if (playerHand[0].value === 14) {
     document.querySelector(".player-card .card-value p").textContent = "A";
-  }else {
-  document.querySelector(".player-card .card-value p").textContent =
-    playerHand[0].value;
+  } else {
+    document.querySelector(".player-card .card-value p").textContent =
+      playerHand[0].value;
   }
-
+  //conditions that determine which suit gets rendered to the card
   if (playerHand[0].suit === "Spades") {
     document.querySelector(".player-card .spades").classList.add("show");
+    document.querySelector(".player-card .clubs").classList.remove("show");
+    document.querySelector(".player-card .hearts").classList.remove("show");
+    document.querySelector(".player-card .diamonds").classList.remove("show");
   } else if (playerHand[0].suit === "Clubs") {
     document.querySelector(".player-card .clubs").classList.add("show");
+    document.querySelector(".player-card .spades").classList.remove("show");
+    document.querySelector(".player-card .hearts").classList.remove("show");
+    document.querySelector(".player-card .diamonds").classList.remove("show");
   } else if (playerHand[0].suit === "Hearts") {
     document.querySelector(".player-card .hearts").classList.add("show");
+    document.querySelector(".player-card .spades").classList.remove("show");
+    document.querySelector(".player-card .clubs").classList.remove("show");
+    document.querySelector(".player-card .diamonds").classList.remove("show");
   } else if (playerHand[0].suit === "Diamonds") {
     document.querySelector(".player-card .diamonds").classList.add("show");
+    document.querySelector(".player-card .spades").classList.remove("show");
+    document.querySelector(".player-card .clubs").classList.remove("show");
+    document.querySelector(".player-card .hearts").classList.remove("show");
   }
 };
 
 //function that displays suit and value in playerHand array to card
 const createComputerCard = () => {
+  //converts face card number values into name to append ("A","K","Q","J")
   if (computerHand[0].value === 11) {
     document.querySelector(".computer-card .card-value p").textContent = "J";
   } else if (computerHand[0].value === 12) {
@@ -143,46 +157,68 @@ const createComputerCard = () => {
     document.querySelector(".computer-card .card-value p").textContent =
       computerHand[0].value;
   }
-
+  //conditions that determine which suit gets rendered to the card
   if (computerHand[0].suit === "Spades") {
     document.querySelector(".computer-card .spades").classList.add("show");
+    document.querySelector(".computer-card .clubs").classList.remove("show");
+    document.querySelector(".computer-card .hearts").classList.remove("show");
+    document.querySelector(".computer-card .diamonds").classList.remove("show");
   } else if (computerHand[0].suit === "Clubs") {
     document.querySelector(".computer-card .clubs").classList.add("show");
+    document.querySelector(".computer-card .spades").classList.remove("show");
+    document.querySelector(".computer-card .hearts").classList.remove("show");
+    document.querySelector(".computer-card .diamonds").classList.remove("show");
   } else if (computerHand[0].suit === "Hearts") {
     document.querySelector(".computer-card .hearts").classList.add("show");
+    document.querySelector(".computer-card .spades").classList.remove("show");
+    document.querySelector(".computer-card .clubs").classList.remove("show");
+    document.querySelector(".computer-card .diamonds").classList.remove("show");
   } else if (computerHand[0].suit === "Diamonds") {
     document.querySelector(".computer-card .diamonds").classList.add("show");
+    document.querySelector(".computer-card .spades").classList.remove("show");
+    document.querySelector(".computer-card .clubs").classList.remove("show");
+    document.querySelector(".computer-card .hearts").classList.remove("show");
   }
 };
+
 //function that updates the score
+const updateScore = () => {
+  const playerScore = document.querySelector(".player-score p");
+  const computerScore = document.querySelector(".computer-score p");
+  playerScore.textContent = pScore;
+  computerScore.textContent = cScore;
+};
 
-  const updateScore = () => {
-    const playerScore = document.querySelector(".player-score p");
-    const computerScore = document.querySelector(".computer-score p");
-    playerScore.textContent = pScore;
-    computerScore.textContent = cScore;
-  };
-
-//function that compares value of each card
-
+//function that compares the value of each card
 const compareCards = () => {
-  const playerCardValue = playerHand[0].value
-  const computerCardValue = computerHand[0].value
+  const playerCardValue = playerHand[0].value;
+  const computerCardValue = computerHand[0].value;
+  const playerCard = playerHand.shift();
+  const computerCard = computerHand.shift();
 
-  if (playerCardValue > computerCardValue){
-    console.log("Player Wins!")
-    pScore++
-    cScore--
-    updateScore()
-    return
-  } else if (playerCardValue < computerCardValue) {
-    console.log('Computer Wins!')
-        pScore--;
-        cScore++;
-        updateScore();
-        return;
+  //player wins
+  if (playerCardValue > computerCardValue) {
+    document.querySelector(".winner p").textContent = "Player Wins!";
+    pScore++;
+    cScore--;
+    updateScore();
+    playerHand.push(computerCard);
+    playerHand.push(playerCard);
+    console.log(playerHand.length, computerHand.length);
+    return;
   }
-}
+  //computer wins
+  else if (playerCardValue < computerCardValue) {
+    document.querySelector(".winner p").textContent = "Computer Wins!";
+    pScore--;
+    cScore++;
+    updateScore();
+    computerHand.push(playerCard);
+    computerHand.push(computerCard);
+    console.log(playerHand.length, computerHand.length);
+    return;
+  }
+};
 
 //play our game
 const playGame = () => {
@@ -195,8 +231,8 @@ const playGame = () => {
   flipBtn.addEventListener("click", () => {
     createPlayerCard();
     createComputerCard();
-    playerCard.classList.toggle("active");
-    computerCard.classList.toggle("active");
+    playerCard.classList.add("active");
+    computerCard.classList.add("active");
     compareCards();
   });
 };

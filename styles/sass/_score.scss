@@ -2,9 +2,10 @@
   color: $offWhite;
   height: 20vh;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   padding-top: 40px;
+  transition: opacity 0.5s ease 0.5s;
 }
 
 .player-score, .computer-score {
