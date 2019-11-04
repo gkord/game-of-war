@@ -15,7 +15,10 @@
 //On button click, flip each card over ✔
 //Compare value of each card, card with higher value wins ✔
 //Dynamically update score (+1, -1) after each round ✔
-//Add both cards to the array of the winner (push or unshift??)
+//Add both cards to the array of the winner ✔
+
+//-------WAR (Tie)-------
+//Create a function that splices next 3 cards in array then flips the 4th
 
 let suits = ["Hearts", "Diamonds", "Spades", "Clubs"];
 let values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
@@ -100,9 +103,6 @@ const startGame = () => {
 
 startGame();
 
-let pScore = 26;
-let cScore = 26;
-
 //function that displays suit and value in playerHand array to card
 const createPlayerCard = () => {
   //converts face card number values into name to append ("A","K","Q","J")
@@ -181,45 +181,6 @@ const createComputerCard = () => {
   }
 };
 
-//function that updates the score
-const updateScore = () => {
-  const playerScore = document.querySelector(".player-score p");
-  const computerScore = document.querySelector(".computer-score p");
-  playerScore.textContent = pScore;
-  computerScore.textContent = cScore;
-};
-
-//function that compares the value of each card
-const compareCards = () => {
-  const playerCardValue = playerHand[0].value;
-  const computerCardValue = computerHand[0].value;
-  const playerCard = playerHand.shift();
-  const computerCard = computerHand.shift();
-
-  //player wins
-  if (playerCardValue > computerCardValue) {
-    document.querySelector(".winner p").textContent = "Player Wins!";
-    pScore++;
-    cScore--;
-    updateScore();
-    playerHand.push(computerCard);
-    playerHand.push(playerCard);
-    console.log(playerHand.length, computerHand.length);
-    return;
-  }
-  //computer wins
-  else if (playerCardValue < computerCardValue) {
-    document.querySelector(".winner p").textContent = "Computer Wins!";
-    pScore--;
-    cScore++;
-    updateScore();
-    computerHand.push(playerCard);
-    computerHand.push(computerCard);
-    console.log(playerHand.length, computerHand.length);
-    return;
-  }
-};
-
 //play our game
 const playGame = () => {
   //select flip button and store in a variable
@@ -233,8 +194,68 @@ const playGame = () => {
     createComputerCard();
     playerCard.classList.add("active");
     computerCard.classList.add("active");
-    compareCards();
+    compareCards(playerHand[0].value, computerHand[0].value);
+    console.log(playerHand.length, computerHand.length);
   });
 };
 
 playGame();
+
+
+//function that updates the score
+const updateScore = () => {
+  const playerScore = document.querySelector(".player-score p");
+  const computerScore = document.querySelector(".computer-score p");
+  playerScore.textContent = playerHand.length;
+  computerScore.textContent = computerHand.length;
+};
+
+//function that compares the value of each card
+const compareCards = (player, computer) => {
+  // player wins
+  if (player > computer) {
+    document.querySelector(".winner p").textContent = "Player Wins!";
+    playerHand = playerHand.concat([playerHand.shift(), computerHand.shift()]);
+    updateScore();
+    return;
+  }
+  //computer wins
+  else if (computer > player) {
+    document.querySelector(".winner p").textContent = "Computer Wins!";
+    computerHand = computerHand.concat([computerHand.shift(), playerHand.shift()]);
+    updateScore();
+    return;
+  }
+  // //tie(war)
+  else {
+    document.querySelector(".winner p").textContent = "WAR!";
+    war()
+    // playerHand = playerHand.concat(playerHand.shift())
+    // computerHand = computerHand.concat(computerHand.shift())
+  }
+};
+
+warArray = []
+
+const createWarArray = () => {
+  warArray = warArray.concat(playerHand.splice(0, 4))
+  warArray = warArray.concat(computerHand.splice(0,4));
+  console.log(warArray)
+}
+
+const war = () => {
+  createWarArray()
+  compareWarCards(playerHand[0], computerHand[0])
+}
+
+const compareWarCards = (player,computer) => {
+console.log(player,computer)
+if (player > computer) {
+  playerHand = playerHand.concat(warArray)
+  document.querySelector(".winner p").textContent = "Player Wins War!";
+} else {
+  computerHand = computerHand.concat(warArray)
+  document.querySelector(".winner p").textContent = "Computer Wins War!";
+}
+console.log(playerHand, computerHand)
+}
