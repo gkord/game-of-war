@@ -103,6 +103,8 @@ const startGame = () => {
 
 startGame();
 
+//-------------------------NOW IN GAMEPLAY MODE---------------------//
+
 //function that displays suit and value in playerHand array to card
 const createPlayerCard = () => {
   //converts face card number values into name to append ("A","K","Q","J")
@@ -229,11 +231,16 @@ const compareCards = (player, computer) => {
   // //tie(war)
   else {
     document.querySelector(".winner p").textContent = "WAR!";
-    war()
+    setTimeout(() => {
+      war();
+    }, 1500);
+    
     // playerHand = playerHand.concat(playerHand.shift())
     // computerHand = computerHand.concat(computerHand.shift())
   }
 };
+
+//----------------------DEFINE ACTIONS FOR WAR--------------------------//
 
 warArray = []
 
@@ -244,6 +251,8 @@ const createWarArray = () => {
 }
 
 const war = () => {
+  document.querySelector('.match').classList.remove('fadeIn')
+  document.querySelector('.war').classList.add('fadeIn')
   createWarArray()
   compareWarCards(playerHand[0], computerHand[0])
 }
@@ -252,10 +261,10 @@ const compareWarCards = (player,computer) => {
 console.log(player,computer)
 if (player > computer) {
   playerHand = playerHand.concat(warArray)
-  document.querySelector(".winner p").textContent = "Player Wins War!";
+  // document.querySelector(".winner p").textContent = "Player Wins War!";
 } else {
   computerHand = computerHand.concat(warArray)
-  document.querySelector(".winner p").textContent = "Computer Wins War!";
+  // document.querySelector(".winner p").textContent = "Computer Wins War!";
 }
 console.log(playerHand, computerHand)
 }
