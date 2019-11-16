@@ -231,10 +231,10 @@ const compareCards = (player, computer) => {
   // //tie(war)
   else {
     document.querySelector(".winner p").textContent = "WAR!";
+    document.querySelector(".match button").disabled = true;
     setTimeout(() => {
       war();
     }, 1500);
-    
     // playerHand = playerHand.concat(playerHand.shift())
     // computerHand = computerHand.concat(computerHand.shift())
   }
@@ -242,29 +242,49 @@ const compareCards = (player, computer) => {
 
 //----------------------DEFINE ACTIONS FOR WAR--------------------------//
 
-warArray = []
+// warArray = []
 
-const createWarArray = () => {
-  warArray = warArray.concat(playerHand.splice(0, 4))
-  warArray = warArray.concat(computerHand.splice(0,4));
-  console.log(warArray)
-}
+// const createWarArray = () => {
+//   warArray = warArray.concat(playerHand.splice(0, 4))
+//   warArray = warArray.concat(computerHand.splice(0,4));
+//   console.log(warArray)
+// }
+// createWarArray()
+
+
+
+function startCountdown(seconds){
+  let counter = seconds;
+
+  let interval = setInterval(() => {
+    document.querySelector(".war-countdown").textContent = counter--;
+    if(counter < 0 ){
+      console.log(playerHand[3], computerHand[3]);
+      // The code here will run when
+      // the timer has reached zero.
+      
+      clearInterval(interval);
+      document.querySelector(".war-countdown").textContent = "";
+    };
+  }, 1000);
+};
 
 const war = () => {
   document.querySelector('.match').classList.remove('fadeIn')
   document.querySelector('.war').classList.add('fadeIn')
-  createWarArray()
-  compareWarCards(playerHand[0], computerHand[0])
+  document.querySelector(".war-description").textContent = "Drawing 3 cards from each pile"
+  startCountdown(3)
 }
 
-const compareWarCards = (player,computer) => {
-console.log(player,computer)
-if (player > computer) {
-  playerHand = playerHand.concat(warArray)
-  // document.querySelector(".winner p").textContent = "Player Wins War!";
-} else {
-  computerHand = computerHand.concat(warArray)
-  // document.querySelector(".winner p").textContent = "Computer Wins War!";
-}
-console.log(playerHand, computerHand)
-}
+// const compareWarCards = (player,computer) => {
+//   console.log(player,computer)
+//   if (player > computer) {
+//     playerHand = playerHand.concat(warArray)
+//     // document.querySelector(".winner p").textContent = "Player Wins War!";
+//   } else {
+//     computerHand = computerHand.concat(warArray)
+//     // document.querySelector(".winner p").textContent = "Computer Wins War!";
+//   }
+//   console.log(playerHand, computerHand)
+// }
+// compareWarCards(playerHand[0], computerHand[0])
