@@ -222,7 +222,8 @@ p {
   cursor: pointer;
 }
 
-.match button, .war button {
+.match button,
+.war button {
   width: 150px;
   height: 50px;
   border: none;
@@ -367,6 +368,14 @@ div.fadeIn {
 .war-countdown {
   color: #e0e0e0;
   font-size: 5rem;
+}
+
+.war-winner {
+  color: #e0e0e0;
+  font-size: 2.5rem;
+  padding-top: 50px;
+  margin: 0;
+  min-width: 180px;
 }
 
 .war-container {

@@ -106,37 +106,37 @@ startGame();
 //-------------------------NOW IN GAMEPLAY MODE---------------------//
 
 //function that displays suit and value in playerHand array to card
-const createPlayerCard = () => {
+const createPlayerCard = playerCard => {
   //converts face card number values into name to append ("A","K","Q","J")
-  if (playerHand[0].value === 11) {
+  if (playerCard.value === 11) {
     document.querySelector(".player-card .card-value p").textContent = "J";
-  } else if (playerHand[0].value === 12) {
+  } else if (playerCard.value === 12) {
     document.querySelector(".player-card .card-value p").textContent = "Q";
-  } else if (playerHand[0].value === 13) {
+  } else if (playerCard.value === 13) {
     document.querySelector(".player-card .card-value p").textContent = "K";
-  } else if (playerHand[0].value === 14) {
+  } else if (playerCard.value === 14) {
     document.querySelector(".player-card .card-value p").textContent = "A";
   } else {
     document.querySelector(".player-card .card-value p").textContent =
-      playerHand[0].value;
+      playerCard.value;
   }
   //conditions that determine which suit gets rendered to the card
-  if (playerHand[0].suit === "Spades") {
+  if (playerCard.suit === "Spades") {
     document.querySelector(".player-card .spades").classList.add("show");
     document.querySelector(".player-card .clubs").classList.remove("show");
     document.querySelector(".player-card .hearts").classList.remove("show");
     document.querySelector(".player-card .diamonds").classList.remove("show");
-  } else if (playerHand[0].suit === "Clubs") {
+  } else if (playerCard.suit === "Clubs") {
     document.querySelector(".player-card .clubs").classList.add("show");
     document.querySelector(".player-card .spades").classList.remove("show");
     document.querySelector(".player-card .hearts").classList.remove("show");
     document.querySelector(".player-card .diamonds").classList.remove("show");
-  } else if (playerHand[0].suit === "Hearts") {
+  } else if (playerCard.suit === "Hearts") {
     document.querySelector(".player-card .hearts").classList.add("show");
     document.querySelector(".player-card .spades").classList.remove("show");
     document.querySelector(".player-card .clubs").classList.remove("show");
     document.querySelector(".player-card .diamonds").classList.remove("show");
-  } else if (playerHand[0].suit === "Diamonds") {
+  } else if (playerCard.suit === "Diamonds") {
     document.querySelector(".player-card .diamonds").classList.add("show");
     document.querySelector(".player-card .spades").classList.remove("show");
     document.querySelector(".player-card .clubs").classList.remove("show");
@@ -145,37 +145,37 @@ const createPlayerCard = () => {
 };
 
 //function that displays suit and value in playerHand array to card
-const createComputerCard = () => {
+const createComputerCard = computerCard => {
   //converts face card number values into name to append ("A","K","Q","J")
-  if (computerHand[0].value === 11) {
+  if (computerCard.value === 11) {
     document.querySelector(".computer-card .card-value p").textContent = "J";
-  } else if (computerHand[0].value === 12) {
+  } else if (computerCard.value === 12) {
     document.querySelector(".computer-card .card-value p").textContent = "Q";
-  } else if (computerHand[0].value === 13) {
+  } else if (computerCard.value === 13) {
     document.querySelector(".computer-card .card-value p").textContent = "K";
-  } else if (computerHand[0].value === 14) {
+  } else if (computerCard.value === 14) {
     document.querySelector(".computer-card .card-value p").textContent = "A";
   } else {
     document.querySelector(".computer-card .card-value p").textContent =
-      computerHand[0].value;
+      computerCard.value;
   }
   //conditions that determine which suit gets rendered to the card
-  if (computerHand[0].suit === "Spades") {
+  if (computerCard.suit === "Spades") {
     document.querySelector(".computer-card .spades").classList.add("show");
     document.querySelector(".computer-card .clubs").classList.remove("show");
     document.querySelector(".computer-card .hearts").classList.remove("show");
     document.querySelector(".computer-card .diamonds").classList.remove("show");
-  } else if (computerHand[0].suit === "Clubs") {
+  } else if (computerCard.suit === "Clubs") {
     document.querySelector(".computer-card .clubs").classList.add("show");
     document.querySelector(".computer-card .spades").classList.remove("show");
     document.querySelector(".computer-card .hearts").classList.remove("show");
     document.querySelector(".computer-card .diamonds").classList.remove("show");
-  } else if (computerHand[0].suit === "Hearts") {
+  } else if (computerCard.suit === "Hearts") {
     document.querySelector(".computer-card .hearts").classList.add("show");
     document.querySelector(".computer-card .spades").classList.remove("show");
     document.querySelector(".computer-card .clubs").classList.remove("show");
     document.querySelector(".computer-card .diamonds").classList.remove("show");
-  } else if (computerHand[0].suit === "Diamonds") {
+  } else if (computerCard.suit === "Diamonds") {
     document.querySelector(".computer-card .diamonds").classList.add("show");
     document.querySelector(".computer-card .spades").classList.remove("show");
     document.querySelector(".computer-card .clubs").classList.remove("show");
@@ -192,8 +192,8 @@ const playGame = () => {
 
   //create event listener for flipBtn
   flipBtn.addEventListener("click", () => {
-    createPlayerCard();
-    createComputerCard();
+    createPlayerCard(playerHand[0]);
+    createComputerCard(computerHand[0]);
     playerCard.classList.add("active");
     computerCard.classList.add("active");
     compareCards(playerHand[0].value, computerHand[0].value);
@@ -202,7 +202,6 @@ const playGame = () => {
 };
 
 playGame();
-
 
 //function that updates the score
 const updateScore = () => {
@@ -224,7 +223,10 @@ const compareCards = (player, computer) => {
   //computer wins
   else if (computer > player) {
     document.querySelector(".winner p").textContent = "Computer Wins!";
-    computerHand = computerHand.concat([computerHand.shift(), playerHand.shift()]);
+    computerHand = computerHand.concat([
+      computerHand.shift(),
+      playerHand.shift()
+    ]);
     updateScore();
     return;
   }
@@ -242,49 +244,88 @@ const compareCards = (player, computer) => {
 
 //----------------------DEFINE ACTIONS FOR WAR--------------------------//
 
-// warArray = []
+warArray = [];
 
-// const createWarArray = () => {
-//   warArray = warArray.concat(playerHand.splice(0, 4))
-//   warArray = warArray.concat(computerHand.splice(0,4));
-//   console.log(warArray)
-// }
-// createWarArray()
+const createWarArray = () => {
+  warArray = warArray.concat(playerHand.splice(0, 3));
+  warArray = warArray.concat(computerHand.splice(0, 3));
+  console.log(warArray);
+};
 
-
-
-function startCountdown(seconds){
+//countdown from 3 to settle war
+const warCountdown = seconds => {
   let counter = seconds;
 
   let interval = setInterval(() => {
     document.querySelector(".war-countdown").textContent = counter--;
-    if(counter < 0 ){
-      console.log(playerHand[3], computerHand[3]);
-      // The code here will run when
-      // the timer has reached zero.
-      
+    if (counter < 0) {
+      // The code here will run when the timer has reached zero
+      showWarCards();
       clearInterval(interval);
       document.querySelector(".war-countdown").textContent = "";
-    };
+    }
   }, 1000);
 };
 
-const war = () => {
-  document.querySelector('.match').classList.remove('fadeIn')
-  document.querySelector('.war').classList.add('fadeIn')
-  document.querySelector(".war-description").textContent = "Drawing 3 cards from each pile"
-  startCountdown(3)
-}
+//function that flips the war card to be compared
+const showWarCards = () => {
+  const warPlayerCard = document.querySelector(".war-player-card");
+  const warComputerCard = document.querySelector(".war-computer-card");
+  // createPlayerCard(playerHand[3]);
+  // createComputerCard(computerHand[3]);
+  warPlayerCard.classList.add("active");
+  warComputerCard.classList.add("active");
+  setTimeout(() => {
+    compareWarCards(playerHand[0].value, computerHand[0].value);
+  }, 500);
+};
 
-// const compareWarCards = (player,computer) => {
-//   console.log(player,computer)
-//   if (player > computer) {
-//     playerHand = playerHand.concat(warArray)
-//     // document.querySelector(".winner p").textContent = "Player Wins War!";
-//   } else {
-//     computerHand = computerHand.concat(warArray)
-//     // document.querySelector(".winner p").textContent = "Computer Wins War!";
-//   }
-//   console.log(playerHand, computerHand)
-// }
-// compareWarCards(playerHand[0], computerHand[0])
+//function to compare the war cards of each player
+const compareWarCards = (player, computer) => {
+  console.log(playerHand[0], computerHand[0]);
+  if (player > computer) {
+    playerHand = playerHand.concat(warArray);
+    document.querySelector(".war-winner").textContent = "Player Wins War!";
+    updateScore();
+    warArray = [];
+    return;
+  } else if (computer > player) {
+    computerHand = computerHand.concat(warArray);
+    document.querySelector(".war-winner").textContent = "Computer Wins War!";
+    updateScore();
+    warArray = [];
+    return
+  } else 
+  // document.querySelector(".war-winner").textContent = "WAR!";
+  setTimeout(() => {
+    war();
+  }, 1500);
+  console.log(playerHand, computerHand);
+  return;
+};
+
+//function that ends war and returns to the main game
+const endWar = () => {
+  setTimeout(() => {
+    document.querySelector(".match button").disabled = false;
+    document.querySelector(".war").classList.remove("fadeIn");
+    document.querySelector(".match").classList.add("fadeIn");
+    document.querySelector(".war-winner").textContent = "";
+    document.querySelector(".winner p").textContent = "";
+    document.querySelector(".player-card").classList.remove("active");
+    document.querySelector(".computer-card").classList.remove("active");
+  }, 5500);
+  document.querySelector(".war-player-card").classList.remove("active");
+  document.querySelector(".war-computer-card").classList.remove("active");
+};
+
+//our main war function
+const war = () => {
+  createWarArray();
+  document.querySelector(".match").classList.remove("fadeIn");
+  document.querySelector(".war").classList.add("fadeIn");
+  document.querySelector(".war-description").textContent =
+    "Drawing 3 cards from each pile";
+  warCountdown(3);
+  endWar();
+};
