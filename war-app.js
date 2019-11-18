@@ -265,6 +265,84 @@ const createWarArray = () => {
   console.log(warArray);
 };
 
+//function that displays suit and value in playerHand array to card
+const createPlayerWarCard = playerCard => {
+  //converts face card number values into name to append ("A","K","Q","J")
+  if (playerCard.value === 11) {
+    document.querySelector(".war-player-card .card-value p").textContent = "J";
+  } else if (playerCard.value === 12) {
+    document.querySelector(".war-player-card .card-value p").textContent = "Q";
+  } else if (playerCard.value === 13) {
+    document.querySelector(".war-player-card .card-value p").textContent = "K";
+  } else if (playerCard.value === 14) {
+    document.querySelector(".war-player-card .card-value p").textContent = "A";
+  } else {
+    document.querySelector(".war-player-card .card-value p").textContent =
+      playerCard.value;
+  }
+  //conditions that determine which suit gets rendered to the card
+  if (playerCard.suit === "Spades") {
+    document.querySelector(".war-player-card .spades").classList.add("show");
+    document.querySelector(".war-player-card .clubs").classList.remove("show");
+    document.querySelector(".war-player-card .hearts").classList.remove("show");
+    document.querySelector(".war-player-card .diamonds").classList.remove("show");
+  } else if (playerCard.suit === "Clubs") {
+    document.querySelector(".war-player-card .clubs").classList.add("show");
+    document.querySelector(".war-player-card .spades").classList.remove("show");
+    document.querySelector(".war-player-card .hearts").classList.remove("show");
+    document.querySelector(".war-player-card .diamonds").classList.remove("show");
+  } else if (playerCard.suit === "Hearts") {
+    document.querySelector(".war-player-card .hearts").classList.add("show");
+    document.querySelector(".war-player-card .spades").classList.remove("show");
+    document.querySelector(".war-player-card .clubs").classList.remove("show");
+    document.querySelector(".war-player-card .diamonds").classList.remove("show");
+  } else if (playerCard.suit === "Diamonds") {
+    document.querySelector(".war-player-card .diamonds").classList.add("show");
+    document.querySelector(".war-player-card .spades").classList.remove("show");
+    document.querySelector(".war-player-card .clubs").classList.remove("show");
+    document.querySelector(".war-player-card .hearts").classList.remove("show");
+  }
+};
+
+//function that displays suit and value in playerHand array to card
+const createComputerWarCard = computerCard => {
+  //converts face card number values into name to append ("A","K","Q","J")
+  if (computerCard.value === 11) {
+    document.querySelector(".war-computer-card .card-value p").textContent = "J";
+  } else if (computerCard.value === 12) {
+    document.querySelector(".war-computer-card .card-value p").textContent = "Q";
+  } else if (computerCard.value === 13) {
+    document.querySelector(".war-computer-card .card-value p").textContent = "K";
+  } else if (computerCard.value === 14) {
+    document.querySelector(".war-computer-card .card-value p").textContent = "A";
+  } else {
+    document.querySelector(".war-computer-card .card-value p").textContent =
+      computerCard.value;
+  }
+  //conditions that determine which suit gets rendered to the card
+  if (computerCard.suit === "Spades") {
+    document.querySelector(".war-computer-card .spades").classList.add("show");
+    document.querySelector(".war-computer-card .clubs").classList.remove("show");
+    document.querySelector(".war-computer-card .hearts").classList.remove("show");
+    document.querySelector(".war-computer-card .diamonds").classList.remove("show");
+  } else if (computerCard.suit === "Clubs") {
+    document.querySelector(".war-computer-card .clubs").classList.add("show");
+    document.querySelector(".war-computer-card .spades").classList.remove("show");
+    document.querySelector(".war-computer-card .hearts").classList.remove("show");
+    document.querySelector(".war-computer-card .diamonds").classList.remove("show");
+  } else if (computerCard.suit === "Hearts") {
+    document.querySelector(".war-computer-card .hearts").classList.add("show");
+    document.querySelector(".war-computer-card .spades").classList.remove("show");
+    document.querySelector(".war-computer-card .clubs").classList.remove("show");
+    document.querySelector(".war-computer-card .diamonds").classList.remove("show");
+  } else if (computerCard.suit === "Diamonds") {
+    document.querySelector(".war-computer-card .diamonds").classList.add("show");
+    document.querySelector(".war-computer-card .spades").classList.remove("show");
+    document.querySelector(".war-computer-card .clubs").classList.remove("show");
+    document.querySelector(".war-computer-card .hearts").classList.remove("show");
+  }
+};
+
 //countdown from 3 to settle war
 const warCountdown = seconds => {
   let counter = seconds;
@@ -284,8 +362,8 @@ const warCountdown = seconds => {
 const showWarCards = () => {
   const warPlayerCard = document.querySelector(".war-player-card");
   const warComputerCard = document.querySelector(".war-computer-card");
-  // createPlayerCard(playerHand[3]);
-  // createComputerCard(computerHand[3]);
+  createPlayerWarCard(playerHand[0]);
+  createComputerWarCard(computerHand[0]);
   warPlayerCard.classList.add("active");
   warComputerCard.classList.add("active");
   setTimeout(() => {
@@ -297,13 +375,17 @@ const showWarCards = () => {
 const compareWarCards = (player, computer) => {
   console.log(playerHand[0], computerHand[0]);
   if (player > computer) {
-    playerHand = playerHand.concat(warArray);
+    playerHand = playerHand.concat([
+      ...warArray,
+      playerHand.shift(),
+      computerHand.shift()
+    ]);
     document.querySelector(".war-winner").textContent = "Player Wins War!";
     updateScore();
     warArray = [];
     return;
   } else if (computer > player) {
-    computerHand = computerHand.concat(warArray);
+    computerHand = computerHand.concat([...warArray, playerHand.shift(), computerHand.shift()])
     document.querySelector(".war-winner").textContent = "Computer Wins War!";
     updateScore();
     warArray = [];
@@ -313,7 +395,6 @@ const compareWarCards = (player, computer) => {
   setTimeout(() => {
     war();
   }, 1500);
-  console.log(playerHand, computerHand);
   return;
 };
 
@@ -327,6 +408,7 @@ const endWar = () => {
     document.querySelector(".winner p").textContent = "";
     document.querySelector(".player-card").classList.remove("active");
     document.querySelector(".computer-card").classList.remove("active");
+    console.log(playerHand, computerHand);
   }, 5500);
   document.querySelector(".war-player-card").classList.remove("active");
   document.querySelector(".war-computer-card").classList.remove("active");

@@ -261,6 +261,7 @@ div.fadeIn {
       justify-content: space-around;
   -webkit-transition: opacity 0.5s ease;
   transition: opacity 0.5s ease;
+  text-align: center;
 }
 
 .score {
@@ -386,10 +387,10 @@ div.fadeIn {
 .war-card {
   width: 100%;
   height: 100%;
-  -webkit-transition: -webkit-transform .5s ease-in-out;
-  transition: -webkit-transform .5s ease-in-out;
-  transition: transform .5s ease-in-out;
-  transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out;
+  -webkit-transition: -webkit-transform 0.5s ease-in-out;
+  transition: -webkit-transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
@@ -397,9 +398,14 @@ div.fadeIn {
 }
 
 .war-card-front {
+  background: #36c;
+  background: linear-gradient(115deg, transparent 75%, rgba(255, 255, 255, 0.8) 75%) 0 0, linear-gradient(245deg, transparent 75%, rgba(255, 255, 255, 0.8) 75%) 0 0, linear-gradient(115deg, transparent 75%, rgba(255, 255, 255, 0.8) 75%) 7px -15px, linear-gradient(245deg, transparent 75%, rgba(255, 255, 255, 0.8) 75%) 7px -15px, #c22026;
+  background-size: 15px 30px;
   width: 100%;
   height: 100%;
   position: absolute;
+  border: 8px solid #fff;
+  border-radius: 5%;
 }
 
 .war-card-back {
@@ -447,10 +453,10 @@ div.fadeIn {
 .card {
   width: 100%;
   height: 100%;
-  -webkit-transition: -webkit-transform .5s ease-in-out;
-  transition: -webkit-transform .5s ease-in-out;
-  transition: transform .5s ease-in-out;
-  transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out;
+  -webkit-transition: -webkit-transform 0.5s ease-in-out;
+  transition: -webkit-transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
@@ -463,9 +469,14 @@ div.fadeIn {
 }
 
 .card-front {
+  background: #36c;
+  background: linear-gradient(115deg, transparent 75%, rgba(255, 255, 255, 0.8) 75%) 0 0, linear-gradient(245deg, transparent 75%, rgba(255, 255, 255, 0.8) 75%) 0 0, linear-gradient(115deg, transparent 75%, rgba(255, 255, 255, 0.8) 75%) 7px -15px, linear-gradient(245deg, transparent 75%, rgba(255, 255, 255, 0.8) 75%) 7px -15px, #C22026;
+  background-size: 15px 30px;
   width: 100%;
   height: 100%;
   position: absolute;
+  border: 8px solid #FFF;
+  border-radius: 5%;
 }
 
 .card-back {
