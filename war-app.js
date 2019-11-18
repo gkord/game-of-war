@@ -196,6 +196,13 @@ const playGame = () => {
     createComputerCard(computerHand[0]);
     playerCard.classList.add("active");
     computerCard.classList.add("active");
+    flipBtn.disabled = true
+    setTimeout(() => {
+          playerCard.classList.remove("active");
+          computerCard.classList.remove("active");
+          flipBtn.disabled = false
+          document.querySelector(".winner p").textContent = "";
+    }, 1500);
     compareCards(playerHand[0].value, computerHand[0].value);
     console.log(playerHand.length, computerHand.length);
   });
@@ -207,22 +214,28 @@ playGame();
 const updateScore = () => {
   const playerScore = document.querySelector(".player-score p");
   const computerScore = document.querySelector(".computer-score p");
-  playerScore.textContent = playerHand.length;
-  computerScore.textContent = computerHand.length;
+  setTimeout(() => {
+    playerScore.textContent = playerHand.length;
+    computerScore.textContent = computerHand.length;
+  }, 1500);
 };
 
 //function that compares the value of each card
 const compareCards = (player, computer) => {
   // player wins
   if (player > computer) {
-    document.querySelector(".winner p").textContent = "Player Wins!";
+    setTimeout(() => {
+      document.querySelector(".winner p").textContent = "Player Wins!";
+    }, 500);
     playerHand = playerHand.concat([playerHand.shift(), computerHand.shift()]);
     updateScore();
     return;
   }
   //computer wins
   else if (computer > player) {
-    document.querySelector(".winner p").textContent = "Computer Wins!";
+    setTimeout(() => {
+      document.querySelector(".winner p").textContent = "Computer Wins!";
+    }, 500);
     computerHand = computerHand.concat([
       computerHand.shift(),
       playerHand.shift()
@@ -296,7 +309,7 @@ const compareWarCards = (player, computer) => {
     warArray = [];
     return
   } else 
-  // document.querySelector(".war-winner").textContent = "WAR!";
+  document.querySelector(".war-winner").textContent = "WAR!";
   setTimeout(() => {
     war();
   }, 1500);
