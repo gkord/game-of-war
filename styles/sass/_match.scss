@@ -1,17 +1,26 @@
 .match {
   position: absolute;
-  top: 60%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%,-35%);
   transition: opacity 0.5s ease 0.5s;
   width: 800px;
   height: 400px;
-  border: 20px solid #26211C;
-  background: #283F5F;
+  border: 20px solid #26211c;
+  background: #283f5f;
   border-radius: 40px;
+  box-shadow: $boxShadow;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  @include tablet {
+    width: 600px;
+    @include big-phone {
+    flex-direction: column;
+    justify-content: space-around;
+    height: 500px;
+    max-width: 80%;
+  }
+  }
 }
 
 .center {
@@ -20,6 +29,10 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  @include big-phone {
+    flex-direction: column-reverse;
+    height: 30%;
+  }
 }
 
 .winner p {
@@ -28,4 +41,7 @@
   padding-top: 50px;
   margin: 0;
   min-width: 180px;
+    @include big-phone {
+    font-size: 2rem;
+  }
 }

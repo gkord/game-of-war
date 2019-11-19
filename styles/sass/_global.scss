@@ -2,21 +2,34 @@ html {
   font-size: 62.5%;
 }
 
+body {
+  background-color: $tan;
+}
+
 .wrapper {
   max-width: 800px;
   width: 90%;
   margin: 0 auto;
+  height: 100%;
 }
-section {
+
+.game {
   height: 100vh;
-  background-color: $tan;
+  position: relative;
+  overflow: hidden;
+  @include big-phone {
+    overflow: auto;
+  }
 }
 
 h1 {
-  font-size: 5rem;
+  font-size: 6.4rem;
+  font-family: 'Black Ops One', sans-serif;
+  text-transform: uppercase;
+  text-shadow: 2px 2px black;
 }
 
-h2 {
+h3 {
   font-size: 2.5rem;
   margin: 10px;
   text-align: center;
@@ -24,7 +37,7 @@ h2 {
 }
 
 p {
-  font-size: 5rem;
+  font-size: 2rem;
   text-align: center;
   margin: 10px;
 }
@@ -37,6 +50,8 @@ p {
   font-size: 20px;
   background: $blue;
   border-radius: 3px;
+  font-family: 'Open Sans', sans-serif;
+  box-shadow: $boxShadow;
   cursor: pointer;
 }
 
@@ -46,10 +61,20 @@ p {
   height: 50px;
   border: none;
   color: $blue;
-  font-size: 20px;
+  font-size: 2rem;
   background: $offWhite;
   border-radius: 3px;
+  font-family: 'Open Sans', sans-serif;
+  box-shadow: $boxShadow;
   cursor: pointer;
+  &:active{
+    background: #bebebe;
+  }
+  @include tablet {
+    width: 140px;
+    height: 40px;
+    font-size: 1.6rem;
+  }
 }
 
 div.fadeOut {
@@ -60,4 +85,8 @@ div.fadeOut {
 div.fadeIn {
   opacity: 1;
   pointer-events: all;
+}
+
+div.hide {
+  display: none;
 }

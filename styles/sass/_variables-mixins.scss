@@ -1,0 +1,16 @@
+$offWhite: rgb(224, 224, 224);
+$tan: #9b8474;
+$blue: #283F5F;
+$boxShadow: 0 8px 6px -6px black;
+
+@mixin tablet {
+  @media (max-width: 812px) { @content; }
+}
+
+@mixin big-phone {
+  @media (max-width: 608px) { @content; }
+}
+
+@mixin small-phone {
+//   @media (max-width: 812px) { @content; }
+}

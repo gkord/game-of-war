@@ -1,11 +1,20 @@
 .score {
   color: $offWhite;
-  height: 20vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-top: 40px;
   transition: opacity 0.5s ease 0.5s;
+  width: 100%;
+  p {
+    font-size: 5rem;
+  }
+}
+
+@include tablet {
+  .score{
+    justify-content: space-around;
+  }
 }
 
 .player-score, .computer-score {
@@ -15,4 +24,15 @@
   background-size: cover;
   background-repeat: no-repeat;
   border: 5px solid #EDC170;
+  box-shadow: $boxShadow;
+  @include tablet {
+    width: 160px;
+  }
+}
+
+.title {
+  text-align: center;
+  h1{
+    margin: 0;
+  }
 }
