@@ -196,12 +196,12 @@ const playGame = () => {
     createComputerCard(computerHand[0]);
     playerCard.classList.add("active");
     computerCard.classList.add("active");
-    flipBtn.disabled = true
+    flipBtn.disabled = true;
     setTimeout(() => {
-          playerCard.classList.remove("active");
-          computerCard.classList.remove("active");
-          flipBtn.disabled = false
-          document.querySelector(".winner p").textContent = "";
+      playerCard.classList.remove("active");
+      computerCard.classList.remove("active");
+      flipBtn.disabled = false;
+      document.querySelector(".winner p").textContent = "";
     }, 1500);
     compareCards(playerHand[0].value, computerHand[0].value);
     console.log(playerHand.length, computerHand.length);
@@ -245,7 +245,9 @@ const compareCards = (player, computer) => {
   }
   // //tie(war)
   else {
-    document.querySelector(".winner p").textContent = "WAR!";
+    setTimeout(() => {
+      document.querySelector(".winner p").textContent = "WAR!";
+    }, 500);
     document.querySelector(".match button").disabled = true;
     setTimeout(() => {
       war();
@@ -285,17 +287,23 @@ const createPlayerWarCard = playerCard => {
     document.querySelector(".war-player-card .spades").classList.add("show");
     document.querySelector(".war-player-card .clubs").classList.remove("show");
     document.querySelector(".war-player-card .hearts").classList.remove("show");
-    document.querySelector(".war-player-card .diamonds").classList.remove("show");
+    document
+      .querySelector(".war-player-card .diamonds")
+      .classList.remove("show");
   } else if (playerCard.suit === "Clubs") {
     document.querySelector(".war-player-card .clubs").classList.add("show");
     document.querySelector(".war-player-card .spades").classList.remove("show");
     document.querySelector(".war-player-card .hearts").classList.remove("show");
-    document.querySelector(".war-player-card .diamonds").classList.remove("show");
+    document
+      .querySelector(".war-player-card .diamonds")
+      .classList.remove("show");
   } else if (playerCard.suit === "Hearts") {
     document.querySelector(".war-player-card .hearts").classList.add("show");
     document.querySelector(".war-player-card .spades").classList.remove("show");
     document.querySelector(".war-player-card .clubs").classList.remove("show");
-    document.querySelector(".war-player-card .diamonds").classList.remove("show");
+    document
+      .querySelector(".war-player-card .diamonds")
+      .classList.remove("show");
   } else if (playerCard.suit === "Diamonds") {
     document.querySelector(".war-player-card .diamonds").classList.add("show");
     document.querySelector(".war-player-card .spades").classList.remove("show");
@@ -308,13 +316,17 @@ const createPlayerWarCard = playerCard => {
 const createComputerWarCard = computerCard => {
   //converts face card number values into name to append ("A","K","Q","J")
   if (computerCard.value === 11) {
-    document.querySelector(".war-computer-card .card-value p").textContent = "J";
+    document.querySelector(".war-computer-card .card-value p").textContent =
+      "J";
   } else if (computerCard.value === 12) {
-    document.querySelector(".war-computer-card .card-value p").textContent = "Q";
+    document.querySelector(".war-computer-card .card-value p").textContent =
+      "Q";
   } else if (computerCard.value === 13) {
-    document.querySelector(".war-computer-card .card-value p").textContent = "K";
+    document.querySelector(".war-computer-card .card-value p").textContent =
+      "K";
   } else if (computerCard.value === 14) {
-    document.querySelector(".war-computer-card .card-value p").textContent = "A";
+    document.querySelector(".war-computer-card .card-value p").textContent =
+      "A";
   } else {
     document.querySelector(".war-computer-card .card-value p").textContent =
       computerCard.value;
@@ -322,24 +334,50 @@ const createComputerWarCard = computerCard => {
   //conditions that determine which suit gets rendered to the card
   if (computerCard.suit === "Spades") {
     document.querySelector(".war-computer-card .spades").classList.add("show");
-    document.querySelector(".war-computer-card .clubs").classList.remove("show");
-    document.querySelector(".war-computer-card .hearts").classList.remove("show");
-    document.querySelector(".war-computer-card .diamonds").classList.remove("show");
+    document
+      .querySelector(".war-computer-card .clubs")
+      .classList.remove("show");
+    document
+      .querySelector(".war-computer-card .hearts")
+      .classList.remove("show");
+    document
+      .querySelector(".war-computer-card .diamonds")
+      .classList.remove("show");
   } else if (computerCard.suit === "Clubs") {
     document.querySelector(".war-computer-card .clubs").classList.add("show");
-    document.querySelector(".war-computer-card .spades").classList.remove("show");
-    document.querySelector(".war-computer-card .hearts").classList.remove("show");
-    document.querySelector(".war-computer-card .diamonds").classList.remove("show");
+    document
+      .querySelector(".war-computer-card .spades")
+      .classList.remove("show");
+    document
+      .querySelector(".war-computer-card .hearts")
+      .classList.remove("show");
+    document
+      .querySelector(".war-computer-card .diamonds")
+      .classList.remove("show");
   } else if (computerCard.suit === "Hearts") {
     document.querySelector(".war-computer-card .hearts").classList.add("show");
-    document.querySelector(".war-computer-card .spades").classList.remove("show");
-    document.querySelector(".war-computer-card .clubs").classList.remove("show");
-    document.querySelector(".war-computer-card .diamonds").classList.remove("show");
+    document
+      .querySelector(".war-computer-card .spades")
+      .classList.remove("show");
+    document
+      .querySelector(".war-computer-card .clubs")
+      .classList.remove("show");
+    document
+      .querySelector(".war-computer-card .diamonds")
+      .classList.remove("show");
   } else if (computerCard.suit === "Diamonds") {
-    document.querySelector(".war-computer-card .diamonds").classList.add("show");
-    document.querySelector(".war-computer-card .spades").classList.remove("show");
-    document.querySelector(".war-computer-card .clubs").classList.remove("show");
-    document.querySelector(".war-computer-card .hearts").classList.remove("show");
+    document
+      .querySelector(".war-computer-card .diamonds")
+      .classList.add("show");
+    document
+      .querySelector(".war-computer-card .spades")
+      .classList.remove("show");
+    document
+      .querySelector(".war-computer-card .clubs")
+      .classList.remove("show");
+    document
+      .querySelector(".war-computer-card .hearts")
+      .classList.remove("show");
   }
 };
 
@@ -385,13 +423,16 @@ const compareWarCards = (player, computer) => {
     warArray = [];
     return;
   } else if (computer > player) {
-    computerHand = computerHand.concat([...warArray, playerHand.shift(), computerHand.shift()])
+    computerHand = computerHand.concat([
+      ...warArray,
+      playerHand.shift(),
+      computerHand.shift()
+    ]);
     document.querySelector(".war-winner").textContent = "Computer Wins War!";
     updateScore();
     warArray = [];
-    return
-  } else 
-  document.querySelector(".war-winner").textContent = "WAR!";
+    return;
+  } else document.querySelector(".war-winner").textContent = "WAR!";
   setTimeout(() => {
     war();
   }, 1500);

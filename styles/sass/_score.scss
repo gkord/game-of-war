@@ -8,6 +8,9 @@
   width: 100%;
   p {
     font-size: 5rem;
+      @include big-phone {
+        font-size: 3.6rem;
+  }
   }
 }
 
@@ -28,11 +31,17 @@
   @include tablet {
     width: 160px;
   }
+  @include big-phone {
+    height: 100px;
+  }
 }
 
 .title {
   text-align: center;
   h1{
     margin: 0;
+  }
+    @include big-phone {
+    display: none;
   }
 }

@@ -14,17 +14,21 @@
   justify-content: space-around;
   @include tablet {
     width: 600px;
-    @include big-phone {
+  }
+  @include big-phone {
+    transform: translate(-50%, -40%);
     flex-direction: column;
     justify-content: space-around;
     height: 500px;
     max-width: 80%;
   }
+  @include small-phone {
+    transform: translate(-50%, -60%);
   }
 }
 
-.war-text{
-    @include big-phone {
+.war-text {
+  @include big-phone {
     display: flex;
     flex-direction: column-reverse;
     height: 30%;
@@ -36,7 +40,7 @@
   color: $offWhite;
 }
 
-.war-countdown{
+.war-countdown {
   color: $offWhite;
   font-size: 5rem;
 }

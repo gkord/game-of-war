@@ -27,6 +27,7 @@ h1 {
   font-family: 'Black Ops One', sans-serif;
   text-transform: uppercase;
   text-shadow: 2px 2px black;
+  color: $offWhite;
 }
 
 h3 {
@@ -34,6 +35,9 @@ h3 {
   margin: 10px;
   text-align: center;
   border-bottom: 2px solid $offWhite;
+    @include big-phone {
+    font-size: 2rem;
+  }
 }
 
 p {
@@ -87,6 +91,6 @@ div.fadeIn {
   pointer-events: all;
 }
 
-div.hide {
+.hide {
   display: none;
 }

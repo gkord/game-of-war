@@ -3,12 +3,16 @@
 }
 
 .suit-img {
-  height: 120px;
   width: 100px;
+  height: 120px;
   display: none;
   @include tablet {
-    height: 80px;
     width: 60px;
+    height: 80px;
+  }
+  @include big-phone {
+      width: 50px;
+      height: 60px;
   }
 }
 
@@ -20,11 +24,11 @@
   width: 160px;
   height: 220px;
   @include tablet {
-    height: 180px;
     width: 120px;
+    height: 180px;
     @include big-phone {
-    height: 150px;
-    width: 100px;
+      width: 80px;
+      height: 120px;
   }
   }
 }
@@ -81,4 +85,7 @@
       @include tablet {
       font-size: 3.2rem;
     }
+    @include big-phone {
+      font-size: 2.6rem;
+  }
   }

@@ -211,6 +211,7 @@ h1 {
   font-family: 'Black Ops One', sans-serif;
   text-transform: uppercase;
   text-shadow: 2px 2px black;
+  color: #e0e0e0;
 }
 
 h3 {
@@ -218,6 +219,12 @@ h3 {
   margin: 10px;
   text-align: center;
   border-bottom: 2px solid #e0e0e0;
+}
+
+@media (max-width: 608px) {
+  h3 {
+    font-size: 2rem;
+  }
 }
 
 p {
@@ -279,8 +286,29 @@ div.fadeIn {
   pointer-events: all;
 }
 
-div.hide {
+.hide {
   display: none;
+}
+
+.header {
+  display: none;
+}
+
+@media (max-width: 608px) {
+  .header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .header h1 {
+    margin: 0;
+  }
 }
 
 .intro {
@@ -323,6 +351,12 @@ div.hide {
   font-size: 5rem;
 }
 
+@media (max-width: 608px) {
+  .score p {
+    font-size: 3.6rem;
+  }
+}
+
 @media (max-width: 812px) {
   .score {
     -ms-flex-pack: distribute;
@@ -347,12 +381,24 @@ div.hide {
   }
 }
 
+@media (max-width: 608px) {
+  .player-score, .computer-score {
+    height: 100px;
+  }
+}
+
 .title {
   text-align: center;
 }
 
 .title h1 {
   margin: 0;
+}
+
+@media (max-width: 608px) {
+  .title {
+    display: none;
+  }
 }
 
 .match {
@@ -385,8 +431,10 @@ div.hide {
   }
 }
 
-@media (max-width: 812px) and (max-width: 608px) {
+@media (max-width: 608px) {
   .match {
+    -webkit-transform: translate(-50%, -40%);
+            transform: translate(-50%, -40%);
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -395,6 +443,13 @@ div.hide {
         justify-content: space-around;
     height: 500px;
     max-width: 80%;
+  }
+}
+
+@media (max-width: 420px) {
+  .match {
+    -webkit-transform: translate(-50%, -60%);
+            transform: translate(-50%, -60%);
   }
 }
 
@@ -421,7 +476,7 @@ div.hide {
     -webkit-box-direction: reverse;
         -ms-flex-direction: column-reverse;
             flex-direction: column-reverse;
-    height: 30%;
+    height: 20%;
   }
 }
 
@@ -436,6 +491,7 @@ div.hide {
 @media (max-width: 608px) {
   .winner p {
     font-size: 2rem;
+    padding: 0;
   }
 }
 
@@ -469,8 +525,10 @@ div.hide {
   }
 }
 
-@media (max-width: 812px) and (max-width: 608px) {
+@media (max-width: 608px) {
   .war {
+    -webkit-transform: translate(-50%, -40%);
+            transform: translate(-50%, -40%);
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -479,6 +537,13 @@ div.hide {
         justify-content: space-around;
     height: 500px;
     max-width: 80%;
+  }
+}
+
+@media (max-width: 420px) {
+  .war {
+    -webkit-transform: translate(-50%, -60%);
+            transform: translate(-50%, -60%);
   }
 }
 
@@ -520,15 +585,15 @@ div.hide {
 
 @media (max-width: 812px) {
   .war-container {
-    height: 180px;
     width: 120px;
+    height: 180px;
   }
 }
 
 @media (max-width: 812px) and (max-width: 608px) {
   .war-container {
-    height: 150px;
-    width: 100px;
+    width: 80px;
+    height: 120px;
   }
 }
 
@@ -588,15 +653,22 @@ div.hide {
 }
 
 .suit-img {
-  height: 120px;
   width: 100px;
+  height: 120px;
   display: none;
 }
 
 @media (max-width: 812px) {
   .suit-img {
-    height: 80px;
     width: 60px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 608px) {
+  .suit-img {
+    width: 50px;
+    height: 60px;
   }
 }
 
@@ -611,15 +683,15 @@ div.hide {
 
 @media (max-width: 812px) {
   .card-container {
-    height: 180px;
     width: 120px;
+    height: 180px;
   }
 }
 
 @media (max-width: 812px) and (max-width: 608px) {
   .card-container {
-    height: 150px;
-    width: 100px;
+    width: 80px;
+    height: 120px;
   }
 }
 
@@ -686,5 +758,11 @@ div.hide {
 @media (max-width: 812px) {
   .card-value p {
     font-size: 3.2rem;
+  }
+}
+
+@media (max-width: 608px) {
+  .card-value p {
+    font-size: 2.6rem;
   }
 }

@@ -12,5 +12,5 @@ $boxShadow: 0 8px 6px -6px black;
 }
 
 @mixin small-phone {
-//   @media (max-width: 812px) { @content; }
+  @media (max-width: 420px) { @content; }
 }
