@@ -79,8 +79,8 @@ deck.shuffle();
 let playerHand = deck.deal();
 let computerHand = deck.deal();
 
-console.log(playerHand);
-console.log(computerHand);
+// console.log(playerHand);
+// console.log(computerHand);
 
 //start our game
 const startGame = () => {
@@ -204,7 +204,7 @@ const playGame = () => {
       document.querySelector(".winner p").textContent = "";
     }, 1500);
     compareCards(playerHand[0].value, computerHand[0].value);
-    console.log(playerHand.length, computerHand.length);
+    // console.log(playerHand.length, computerHand.length);
   });
 };
 
@@ -264,7 +264,7 @@ warArray = [];
 const createWarArray = () => {
   warArray = warArray.concat(playerHand.splice(0, 3));
   warArray = warArray.concat(computerHand.splice(0, 3));
-  console.log(warArray);
+  // console.log(warArray);
 };
 
 //function that displays suit and value in playerHand array to card
@@ -411,7 +411,7 @@ const showWarCards = () => {
 
 //function to compare the war cards of each player
 const compareWarCards = (player, computer) => {
-  console.log(playerHand[0], computerHand[0]);
+  // console.log(playerHand[0], computerHand[0]);
   if (player > computer) {
     playerHand = playerHand.concat([
       ...warArray,
@@ -449,7 +449,7 @@ const endWar = () => {
     document.querySelector(".winner p").textContent = "";
     document.querySelector(".player-card").classList.remove("active");
     document.querySelector(".computer-card").classList.remove("active");
-    console.log(playerHand, computerHand);
+    // console.log(playerHand, computerHand);
   }, 5500);
   document.querySelector(".war-player-card").classList.remove("active");
   document.querySelector(".war-computer-card").classList.remove("active");
