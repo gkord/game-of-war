@@ -3,11 +3,11 @@
 }
 
 .suit-img {
-  width: 100px;
-  height: 120px;
+  width: 80px;
+  height: 100px;
   display: none;
   @include tablet {
-    width: 60px;
+    width: 65px;
     height: 80px;
   }
   @include big-phone {
@@ -81,7 +81,7 @@
 }
 
 .card-value p {
-  font-size: 5rem;
+  font-size: 4.4rem;
       @include tablet {
       font-size: 3.2rem;
     }

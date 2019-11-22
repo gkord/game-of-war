@@ -6,27 +6,35 @@
   padding-top: 40px;
   transition: opacity 0.5s ease 0.5s;
   width: 100%;
+      @include small-phone {
+      padding-top: 0;
+    }
   p {
     font-size: 5rem;
-      @include big-phone {
-        font-size: 3.6rem;
-  }
+    @include big-phone {
+      font-size: 3.6rem;
+    }
+    @include small-phone {
+      font-size: 3rem;
+      margin: 0;
+    }
   }
 }
 
 @include tablet {
-  .score{
+  .score {
     justify-content: space-around;
   }
 }
 
-.player-score, .computer-score {
+.player-score,
+.computer-score {
   height: 120px;
   width: 180px;
   background: url(../assets/chalkboard.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  border: 5px solid #EDC170;
+  border: 5px solid #edc170;
   box-shadow: $boxShadow;
   @include tablet {
     width: 160px;
@@ -34,14 +42,19 @@
   @include big-phone {
     height: 100px;
   }
+  @include small-phone {
+    min-height: 80px;
+    max-height: 90px;
+    width: 120px;
+  }
 }
 
 .title {
   text-align: center;
-  h1{
+  h1 {
     margin: 0;
   }
-    @include big-phone {
+  @include big-phone {
     display: none;
   }
 }

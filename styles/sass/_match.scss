@@ -22,6 +22,9 @@
     height: 500px;
     max-width: 80%;
   }
+  @include medium-phone {
+    transform: translate(-50%, -55%);
+  }
   @include small-phone {
     transform: translate(-50%, -60%);
   }

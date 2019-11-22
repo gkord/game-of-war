@@ -1,0 +1,33 @@
+.winner-display { 
+    position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.5s ease 0.5s;
+  width: 800px;
+  height: 600px;
+  background: url(../assets/cat.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  @include tablet {
+    width: 600px;
+    height: 80%;
+    justify-content: flex-end;
+  }
+  @include big-phone {
+    height: 500px;
+    max-width: 80%;
+    background-position: initial;
+  }
+}
+
+.winner-display p {
+    color: $offWhite;
+    font-size: 2.5rem;
+    text-shadow: 0px 0px 5px black;
+}

@@ -22,6 +22,9 @@
     height: 500px;
     max-width: 80%;
   }
+    @include medium-phone {
+    transform: translate(-50%, -50%);
+  }
   @include small-phone {
     transform: translate(-50%, -60%);
   }
@@ -38,6 +41,7 @@
 .war-description {
   font-size: 2rem;
   color: $offWhite;
+  max-width: 220px;
 }
 
 .war-countdown {
@@ -51,4 +55,8 @@
   padding-top: 50px;
   margin: 0;
   min-width: 180px;
+    @include big-phone {
+    font-size: 2rem;
+    padding: 0;
+  }
 }

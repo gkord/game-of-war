@@ -202,7 +202,8 @@ body {
 
 @media (max-width: 608px) {
   .game {
-    overflow: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
 }
 
@@ -233,7 +234,8 @@ p {
   margin: 10px;
 }
 
-.intro button {
+.intro button,
+.reset-button {
   width: 150px;
   height: 50px;
   border: none;
@@ -294,7 +296,7 @@ div.fadeIn {
   display: none;
 }
 
-@media (max-width: 608px) {
+@media (max-width: 420px) {
   .header {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -305,6 +307,7 @@ div.fadeIn {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    padding-bottom: 20px;
   }
   .header h1 {
     margin: 0;
@@ -347,6 +350,12 @@ div.fadeIn {
   width: 100%;
 }
 
+@media (max-width: 420px) {
+  .score {
+    padding-top: 0;
+  }
+}
+
 .score p {
   font-size: 5rem;
 }
@@ -357,6 +366,13 @@ div.fadeIn {
   }
 }
 
+@media (max-width: 420px) {
+  .score p {
+    font-size: 3rem;
+    margin: 0;
+  }
+}
+
 @media (max-width: 812px) {
   .score {
     -ms-flex-pack: distribute;
@@ -364,26 +380,38 @@ div.fadeIn {
   }
 }
 
-.player-score, .computer-score {
+.player-score,
+.computer-score {
   height: 120px;
   width: 180px;
   background: url(../assets/chalkboard.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  border: 5px solid #EDC170;
+  border: 5px solid #edc170;
   -webkit-box-shadow: 0 8px 6px -6px black;
           box-shadow: 0 8px 6px -6px black;
 }
 
 @media (max-width: 812px) {
-  .player-score, .computer-score {
+  .player-score,
+  .computer-score {
     width: 160px;
   }
 }
 
 @media (max-width: 608px) {
-  .player-score, .computer-score {
+  .player-score,
+  .computer-score {
     height: 100px;
+  }
+}
+
+@media (max-width: 420px) {
+  .player-score,
+  .computer-score {
+    min-height: 80px;
+    max-height: 90px;
+    width: 120px;
   }
 }
 
@@ -443,6 +471,13 @@ div.fadeIn {
         justify-content: space-around;
     height: 500px;
     max-width: 80%;
+  }
+}
+
+@media (max-width: 535px) {
+  .match {
+    -webkit-transform: translate(-50%, -55%);
+            transform: translate(-50%, -55%);
   }
 }
 
@@ -540,6 +575,13 @@ div.fadeIn {
   }
 }
 
+@media (max-width: 535px) {
+  .war {
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+}
+
 @media (max-width: 420px) {
   .war {
     -webkit-transform: translate(-50%, -60%);
@@ -563,6 +605,7 @@ div.fadeIn {
 .war-description {
   font-size: 2rem;
   color: #e0e0e0;
+  max-width: 220px;
 }
 
 .war-countdown {
@@ -576,6 +619,13 @@ div.fadeIn {
   padding-top: 50px;
   margin: 0;
   min-width: 180px;
+}
+
+@media (max-width: 608px) {
+  .war-winner {
+    font-size: 2rem;
+    padding: 0;
+  }
 }
 
 .war-container {
@@ -653,14 +703,14 @@ div.fadeIn {
 }
 
 .suit-img {
-  width: 100px;
-  height: 120px;
+  width: 80px;
+  height: 100px;
   display: none;
 }
 
 @media (max-width: 812px) {
   .suit-img {
-    width: 60px;
+    width: 65px;
     height: 80px;
   }
 }
@@ -752,7 +802,7 @@ div.fadeIn {
 }
 
 .card-value p {
-  font-size: 5rem;
+  font-size: 4.4rem;
 }
 
 @media (max-width: 812px) {
@@ -765,4 +815,57 @@ div.fadeIn {
   .card-value p {
     font-size: 2.6rem;
   }
+}
+
+.winner-display {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: opacity 0.5s ease 0.5s;
+  transition: opacity 0.5s ease 0.5s;
+  width: 800px;
+  height: 600px;
+  background: url(../assets/cat.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (max-width: 812px) {
+  .winner-display {
+    width: 600px;
+    height: 80%;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+}
+
+@media (max-width: 608px) {
+  .winner-display {
+    height: 500px;
+    max-width: 80%;
+    background-position: initial;
+  }
+}
+
+.winner-display p {
+  color: #e0e0e0;
+  font-size: 2.5rem;
+  text-shadow: 0px 0px 5px black;
 }

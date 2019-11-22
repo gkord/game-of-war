@@ -82,17 +82,21 @@ let computerHand = deck.deal();
 // console.log(playerHand);
 // console.log(computerHand);
 
+//select intro button and store in a variable
+const playBtn = document.querySelector(".intro button");
+//select intro screen and store in a variable
+const introScreen = document.querySelector(".intro");
+//select score area and store in a variable
+const scoreBoard = document.querySelector(".score");
+//select match screen and store in a variable
+const matchScreen = document.querySelector(".match");
+//select war screen and store in a variable
+const warScreen = document.querySelector(".war");
+//select winner screen and store in a variable
+const winnerScreen = document.querySelector(".winner-display");
+
 //start our game
 const startGame = () => {
-  //select intro button and store in a variable
-  const playBtn = document.querySelector(".intro button");
-  //select intro screen and store in a variable
-  const introScreen = document.querySelector(".intro");
-  //select score area and store in a variable
-  const scoreBoard = document.querySelector(".score");
-  //select match screen and store in a variable
-  const matchScreen = document.querySelector(".match");
-
   //create event listener for playBtn
   playBtn.addEventListener("click", () => {
     introScreen.classList.add("fadeOut");
@@ -210,13 +214,14 @@ const playGame = () => {
 
 playGame();
 
+let playerScore = document.querySelector(".player-score p");
+let computerScore = document.querySelector(".computer-score p");
 //function that updates the score
 const updateScore = () => {
-  const playerScore = document.querySelector(".player-score p");
-  const computerScore = document.querySelector(".computer-score p");
   setTimeout(() => {
     playerScore.textContent = playerHand.length;
     computerScore.textContent = computerHand.length;
+    declareWinner();
   }, 1500);
 };
 
@@ -252,8 +257,6 @@ const compareCards = (player, computer) => {
     setTimeout(() => {
       war();
     }, 1500);
-    // playerHand = playerHand.concat(playerHand.shift())
-    // computerHand = computerHand.concat(computerHand.shift())
   }
 };
 
@@ -264,7 +267,6 @@ warArray = [];
 const createWarArray = () => {
   warArray = warArray.concat(playerHand.splice(0, 3));
   warArray = warArray.concat(computerHand.splice(0, 3));
-  // console.log(warArray);
 };
 
 //function that displays suit and value in playerHand array to card
@@ -443,8 +445,8 @@ const compareWarCards = (player, computer) => {
 const endWar = () => {
   setTimeout(() => {
     document.querySelector(".match button").disabled = false;
-    document.querySelector(".war").classList.remove("fadeIn");
-    document.querySelector(".match").classList.add("fadeIn");
+    warScreen.classList.remove("fadeIn");
+    matchScreen.classList.add("fadeIn");
     document.querySelector(".war-winner").textContent = "";
     document.querySelector(".winner p").textContent = "";
     document.querySelector(".player-card").classList.remove("active");
@@ -458,10 +460,33 @@ const endWar = () => {
 //our main war function
 const war = () => {
   createWarArray();
-  document.querySelector(".match").classList.remove("fadeIn");
-  document.querySelector(".war").classList.add("fadeIn");
+  matchScreen.classList.remove("fadeIn");
+  warScreen.classList.add("fadeIn");
   document.querySelector(".war-description").textContent =
     "Drawing 3 cards from each pile";
   warCountdown(3);
   endWar();
+};
+
+//--------------Winner Function -------------------//
+
+const displayWinner = () => {
+  matchScreen.classList.remove("fadeIn");
+  warScreen.classList.remove("fadeIn");
+  scoreBoard.classList.remove("fadeIn");
+  document.querySelector(".winner-display").classList.add("fadeIn");
+  document.querySelector(".reset-button").addEventListener("click", () => {
+    location.reload();
+  });
+};
+
+const declareWinner = () => {
+  const winnerText = document.querySelector(".winner-display p");
+  if (playerScore === 0) {
+    winnerText.textContent = "Game Over. Computer Wins!";
+    displayWinner();
+  } else if (computerScore === 0) {
+    winnerText.textContent = "Game Over. Player Wins!";
+    displayWinner();
+  }
 };

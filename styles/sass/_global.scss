@@ -18,7 +18,8 @@ body {
   position: relative;
   overflow: hidden;
   @include big-phone {
-    overflow: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
 }
 
@@ -46,7 +47,8 @@ p {
   margin: 10px;
 }
 
-.intro button {
+.intro button,
+.reset-button {
   width: 150px;
   height: 50px;
   border: none;
