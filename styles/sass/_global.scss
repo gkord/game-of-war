@@ -42,8 +42,9 @@ p {
   margin: 10px;
 }
 
-.intro button,
-.reset-button {
+.play-button,
+.reset-button,
+.rules-button {
   width: 150px;
   height: 50px;
   border: none;
@@ -57,7 +58,8 @@ p {
 }
 
 .match button,
-.war button {
+.war button,
+.close-button {
   width: 150px;
   height: 50px;
   border: none;

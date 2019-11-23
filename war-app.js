@@ -83,7 +83,7 @@ let computerHand = deck.deal();
 // console.log(computerHand);
 
 //select intro button and store in a variable
-const playBtn = document.querySelector(".intro button");
+const playBtn = document.querySelector(".play-button");
 //select intro screen and store in a variable
 const introScreen = document.querySelector(".intro");
 //select score area and store in a variable
@@ -96,15 +96,41 @@ const warScreen = document.querySelector(".war");
 const winnerScreen = document.querySelector(".winner-display");
 //select header for mobile and store in a variable
 const headerMobile = document.querySelector(".header");
+//select rules button and store in a variable
+const rulesBtn = document.querySelector(".rules-button")
+//select close button and store in a variable
+const closeBtn = document.querySelector(".close-button")
+//select rules screen and store in a variable
+const rulesScreen = document.querySelector('.rules-container')
+
+
+//open rules
+const showRules = () => {
+  rulesBtn.addEventListener("click", () => {
+    introScreen.classList.add("fadeOut")
+    rulesScreen.classList.add("fadeIn")
+  })
+}
+showRules();
+
+const closeRules = () => {
+  closeBtn.addEventListener("click", () => {
+    rulesScreen.classList.remove("fadeIn");
+    introScreen.classList.add("fadeIn");
+  })
+}
+closeRules()
 
 //start our game
 const startGame = () => {
   //create event listener for playBtn
   playBtn.addEventListener("click", () => {
     introScreen.classList.add("fadeOut");
+    introScreen.classList.remove("fadeIn")
     matchScreen.classList.add("fadeIn");
     scoreBoard.classList.add("fadeIn");
     headerMobile.classList.add("fadeIn");
+
   });
 };
 

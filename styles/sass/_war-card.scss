@@ -15,7 +15,6 @@
   height: 100%;
   transition: transform 0.5s ease-in-out;
   transform-style: preserve-3d;
-  backface-visibility: hidden;
 }
 
 .war-card-front {
@@ -37,6 +36,7 @@
   border: 8px solid #fff;
   border-radius: 5%;
   box-shadow: $boxShadow;
+  backface-visibility: hidden;
 }
 
 .war-card-back {

@@ -226,8 +226,9 @@ p {
   margin: 10px;
 }
 
-.intro button,
-.reset-button {
+.play-button,
+.reset-button,
+.rules-button {
   width: 150px;
   height: 50px;
   border: none;
@@ -242,7 +243,8 @@ p {
 }
 
 .match button,
-.war button {
+.war button,
+.close-button {
   width: 150px;
   height: 50px;
   border: none;
@@ -257,13 +259,15 @@ p {
 }
 
 .match button:active,
-.war button:active {
+.war button:active,
+.close-button:active {
   background: #bebebe;
 }
 
 @media (max-width: 812px) {
   .match button,
-  .war button {
+  .war button,
+  .close-button {
     width: 140px;
     height: 40px;
     font-size: 1.6rem;
@@ -325,6 +329,83 @@ div.fadeIn {
   -webkit-transition: opacity 0.5s ease;
   transition: opacity 0.5s ease;
   text-align: center;
+}
+
+.intro-buttons {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+@media (max-width: 608px) {
+  .intro-buttons {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 150px;
+  }
+}
+
+.rules-container {
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 800px;
+  min-height: 500px;
+  border: 20px solid #26211c;
+  background: #283f5f;
+  border-radius: 40px;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+          box-shadow: 0 8px 6px -6px black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  color: white;
+  padding: 20px;
+}
+
+@media (max-width: 812px) {
+  .rules-container {
+    width: 600px;
+  }
+}
+
+@media (max-width: 608px) {
+  .rules-container {
+    max-width: 80%;
+  }
+}
+
+.rules-container li {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 420px) {
+  .rules-container li {
+    font-size: 1.6rem;
+  }
 }
 
 .score {
@@ -429,8 +510,8 @@ div.fadeIn {
 .match {
   position: absolute;
   left: 50%;
-  -webkit-transform: translate(-50%, -35%);
-          transform: translate(-50%, -35%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   -webkit-transition: opacity 0.5s ease 0.5s;
   transition: opacity 0.5s ease 0.5s;
   width: 800px;
@@ -458,8 +539,8 @@ div.fadeIn {
 
 @media (max-width: 608px) {
   .match {
-    -webkit-transform: translate(-50%, -40%);
-            transform: translate(-50%, -40%);
+    -webkit-transform: translate(-50%, -55%);
+            transform: translate(-50%, -55%);
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -468,13 +549,6 @@ div.fadeIn {
         justify-content: space-around;
     height: 500px;
     max-width: 80%;
-  }
-}
-
-@media (max-width: 535px) {
-  .match {
-    -webkit-transform: translate(-50%, -45%);
-            transform: translate(-50%, -45%);
   }
 }
 
@@ -530,8 +604,8 @@ div.fadeIn {
 .war {
   position: absolute;
   left: 50%;
-  -webkit-transform: translate(-50%, -35%);
-          transform: translate(-50%, -35%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   -webkit-transition: opacity 0.5s ease 0.5s;
   transition: opacity 0.5s ease 0.5s;
   width: 800px;
@@ -559,8 +633,8 @@ div.fadeIn {
 
 @media (max-width: 608px) {
   .war {
-    -webkit-transform: translate(-50%, -40%);
-            transform: translate(-50%, -40%);
+    -webkit-transform: translate(-50%, -55%);
+            transform: translate(-50%, -55%);
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -569,13 +643,6 @@ div.fadeIn {
         justify-content: space-around;
     height: 500px;
     max-width: 80%;
-  }
-}
-
-@media (max-width: 535px) {
-  .war {
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
   }
 }
 
@@ -653,8 +720,6 @@ div.fadeIn {
   transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
 }
 
 .war-card-front {
@@ -668,6 +733,8 @@ div.fadeIn {
   border-radius: 5%;
   -webkit-box-shadow: 0 8px 6px -6px black;
           box-shadow: 0 8px 6px -6px black;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
 }
 
 .war-card-back {

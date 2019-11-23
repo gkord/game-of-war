@@ -21,3 +21,48 @@
   transition: opacity 0.5s ease;
   text-align: center;
 }
+
+.intro-buttons {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  @include big-phone {
+    flex-direction: column;
+    height: 150px;
+  }
+}
+
+.rules-container {
+  transition: opacity 0.5s ease;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  min-height: 500px;
+  border: 20px solid #26211c;
+  background: #283f5f;
+  border-radius: 40px;
+  box-shadow: $boxShadow;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  color: white;
+  padding: 20px;
+  @include tablet {
+    width: 600px;
+  }
+  @include big-phone {
+    max-width: 80%;
+  }
+}
+
+.rules-container li {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  @include small-phone {
+    font-size: 1.6rem;
+  }
+}
