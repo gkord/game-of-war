@@ -197,14 +197,6 @@ body {
 .game {
   height: 100vh;
   position: relative;
-  overflow: hidden;
-}
-
-@media (max-width: 608px) {
-  .game {
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
 }
 
 h1 {
@@ -294,6 +286,8 @@ div.fadeIn {
 
 .header {
   display: none;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
 }
 
 @media (max-width: 420px) {
@@ -377,6 +371,9 @@ div.fadeIn {
   .score {
     -ms-flex-pack: distribute;
         justify-content: space-around;
+  }
+  .score h3 {
+    margin-bottom: 5px;
   }
 }
 
@@ -476,8 +473,8 @@ div.fadeIn {
 
 @media (max-width: 535px) {
   .match {
-    -webkit-transform: translate(-50%, -55%);
-            transform: translate(-50%, -55%);
+    -webkit-transform: translate(-50%, -45%);
+            transform: translate(-50%, -45%);
   }
 }
 
@@ -754,8 +751,6 @@ div.fadeIn {
   transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
 }
 
 .active {
@@ -774,6 +769,8 @@ div.fadeIn {
   border-radius: 5%;
   -webkit-box-shadow: 0 8px 6px -6px black;
           box-shadow: 0 8px 6px -6px black;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
 }
 
 .card-back {

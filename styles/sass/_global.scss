@@ -16,11 +16,6 @@ body {
 .game {
   height: 100vh;
   position: relative;
-  overflow: hidden;
-  @include big-phone {
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
 }
 
 h1 {

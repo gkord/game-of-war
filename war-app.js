@@ -94,6 +94,8 @@ const matchScreen = document.querySelector(".match");
 const warScreen = document.querySelector(".war");
 //select winner screen and store in a variable
 const winnerScreen = document.querySelector(".winner-display");
+//select header for mobile and store in a variable
+const headerMobile = document.querySelector(".header");
 
 //start our game
 const startGame = () => {
@@ -102,6 +104,7 @@ const startGame = () => {
     introScreen.classList.add("fadeOut");
     matchScreen.classList.add("fadeIn");
     scoreBoard.classList.add("fadeIn");
+    headerMobile.classList.add("fadeIn");
   });
 };
 
