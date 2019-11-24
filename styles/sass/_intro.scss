@@ -60,8 +60,11 @@
 }
 
 .rules-container li {
-  font-size: 1.8rem;
+  font-size: 2rem;
   margin-bottom: 10px;
+  @include tablet{
+    font-size: 1.8rem;
+  }
   @include small-phone {
     font-size: 1.6rem;
   }

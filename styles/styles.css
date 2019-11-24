@@ -203,7 +203,7 @@ body {
 
 h1 {
   font-size: 6.4rem;
-  font-family: 'Black Ops One', sans-serif;
+  font-family: "Black Ops One", sans-serif;
   text-transform: uppercase;
   text-shadow: 2px 2px black;
   color: #e0e0e0;
@@ -238,7 +238,7 @@ p {
   font-size: 20px;
   background: #283F5F;
   border-radius: 3px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   -webkit-box-shadow: 0 8px 6px -6px black;
           box-shadow: 0 8px 6px -6px black;
   cursor: pointer;
@@ -254,7 +254,7 @@ p {
   font-size: 2rem;
   background: #e0e0e0;
   border-radius: 3px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   -webkit-box-shadow: 0 8px 6px -6px black;
           box-shadow: 0 8px 6px -6px black;
   cursor: pointer;
@@ -400,8 +400,14 @@ div.fadeIn {
 }
 
 .rules-container li {
-  font-size: 1.8rem;
+  font-size: 2rem;
   margin-bottom: 10px;
+}
+
+@media (max-width: 812px) {
+  .rules-container li {
+    font-size: 1.8rem;
+  }
 }
 
 @media (max-width: 420px) {
@@ -435,6 +441,7 @@ div.fadeIn {
 
 .score p {
   font-size: 5rem;
+  margin: 0;
 }
 
 @media (max-width: 608px) {
@@ -446,8 +453,11 @@ div.fadeIn {
 @media (max-width: 420px) {
   .score p {
     font-size: 3rem;
-    margin: 0;
   }
+}
+
+.score h3 {
+  margin-bottom: 5px;
 }
 
 @media (max-width: 812px) {
@@ -468,6 +478,7 @@ div.fadeIn {
   background-size: cover;
   background-repeat: no-repeat;
   border: 5px solid #edc170;
+  border-radius: 5px;
   -webkit-box-shadow: 0 8px 6px -6px black;
           box-shadow: 0 8px 6px -6px black;
 }
@@ -829,12 +840,12 @@ div.fadeIn {
 
 .card-front {
   background: #36c;
-  background: linear-gradient(115deg, transparent 75%, rgba(255, 255, 255, 0.8) 75%) 0 0, linear-gradient(245deg, transparent 75%, rgba(255, 255, 255, 0.8) 75%) 0 0, linear-gradient(115deg, transparent 75%, rgba(255, 255, 255, 0.8) 75%) 7px -15px, linear-gradient(245deg, transparent 75%, rgba(255, 255, 255, 0.8) 75%) 7px -15px, #C22026;
+  background: linear-gradient(115deg, transparent 75%, rgba(255, 255, 255, 0.8) 75%) 0 0, linear-gradient(245deg, transparent 75%, rgba(255, 255, 255, 0.8) 75%) 0 0, linear-gradient(115deg, transparent 75%, rgba(255, 255, 255, 0.8) 75%) 7px -15px, linear-gradient(245deg, transparent 75%, rgba(255, 255, 255, 0.8) 75%) 7px -15px, #c22026;
   background-size: 15px 30px;
   width: 100%;
   height: 100%;
   position: absolute;
-  border: 8px solid #FFF;
+  border: 8px solid #fff;
   border-radius: 5%;
   -webkit-box-shadow: 0 8px 6px -6px black;
           box-shadow: 0 8px 6px -6px black;
@@ -880,6 +891,41 @@ div.fadeIn {
 @media (max-width: 608px) {
   .card-value p {
     font-size: 2.6rem;
+  }
+}
+
+@media (max-width: 608px) {
+  .player-card-container::before {
+    content: "Player";
+    color: white;
+    opacity: 0.2;
+    font-size: 1.6rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding: 5px;
+  }
+  .computer-card-container::after {
+    content: "Computer";
+    color: white;
+    opacity: 0.2;
+    font-size: 1.6rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding: 5px;
   }
 }
 
