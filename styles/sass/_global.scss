@@ -19,8 +19,11 @@ body {
 }
 
 .game {
-  height: 100vh;
+  height: 90vh;
   position: relative;
+  @include big-phone{
+    height: 100vh;
+  }
 }
 
 h1 {
@@ -95,6 +98,6 @@ div.fadeIn {
   pointer-events: all;
 }
 
-.hide {
+div.hide {
   display: none;
 }

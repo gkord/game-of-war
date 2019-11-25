@@ -107,7 +107,7 @@ const rulesScreen = document.querySelector('.rules-container')
 //open rules
 const showRules = () => {
   rulesBtn.addEventListener("click", () => {
-    introScreen.classList.add("fadeOut")
+    introScreen.classList.add("hide")
     rulesScreen.classList.add("fadeIn")
   })
 }
@@ -116,6 +116,7 @@ showRules();
 const closeRules = () => {
   closeBtn.addEventListener("click", () => {
     rulesScreen.classList.remove("fadeIn");
+    introScreen.classList.remove("hide");
     introScreen.classList.add("fadeIn");
   })
 }
