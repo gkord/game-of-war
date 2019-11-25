@@ -297,7 +297,7 @@ warArray = [];
 const createWarArray = () => {
   warArray = warArray.concat(playerHand.splice(0, 4));
   warArray = warArray.concat(computerHand.splice(0, 4));
-  console.log(warArray);
+  // console.log(warArray);
 };
 
 //function that displays suit and value in playerHand array to card
