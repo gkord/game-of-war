@@ -295,8 +295,9 @@ const compareCards = (player, computer) => {
 warArray = [];
 
 const createWarArray = () => {
-  warArray = warArray.concat(playerHand.splice(0, 3));
-  warArray = warArray.concat(computerHand.splice(0, 3));
+  warArray = warArray.concat(playerHand.splice(0, 4));
+  warArray = warArray.concat(computerHand.splice(0, 4));
+  console.log(warArray);
 };
 
 //function that displays suit and value in playerHand array to card
