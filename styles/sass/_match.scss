@@ -23,7 +23,7 @@
     max-width: 80%;
   }
   @include small-phone {
-    transform: translate(-50%, -60%);
+    transform: translate(-50%, -70%);
   }
 }
 
@@ -39,7 +39,19 @@
   }
 }
 
-.winner p {
+.war-declared {
+  color: $offWhite;
+  font-size: 15rem;
+  position: absolute;
+  font-family: "Black Ops One", sans-serif;
+  text-shadow: 2px 2px black;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+.match-winner {
   color: $offWhite;
   font-size: 2.5rem;
   padding-top: 50px;

@@ -234,7 +234,8 @@ const playGame = () => {
       playerCard.classList.remove("active");
       computerCard.classList.remove("active");
       flipBtn.disabled = false;
-      document.querySelector(".winner p").textContent = "";
+      document.querySelector(".match-winner").textContent = "";
+      document.querySelector(".war-declared").textContent = "";
     }, 1500);
     compareCards(playerHand[0].value, computerHand[0].value);
     // console.log(playerHand.length, computerHand.length);
@@ -259,7 +260,7 @@ const compareCards = (player, computer) => {
   // player wins
   if (player > computer) {
     setTimeout(() => {
-      document.querySelector(".winner p").textContent = "Player Wins!";
+      document.querySelector(".match-winner").textContent = "Player Wins!";
     }, 500);
     playerHand = playerHand.concat([playerHand.shift(), computerHand.shift()]);
     updateScore();
@@ -268,7 +269,7 @@ const compareCards = (player, computer) => {
   //computer wins
   else if (computer > player) {
     setTimeout(() => {
-      document.querySelector(".winner p").textContent = "Computer Wins!";
+      document.querySelector(".match-winner").textContent = "Computer Wins!";
     }, 500);
     computerHand = computerHand.concat([
       computerHand.shift(),
@@ -280,12 +281,12 @@ const compareCards = (player, computer) => {
   // //tie(war)
   else {
     setTimeout(() => {
-      document.querySelector(".winner p").textContent = "WAR!";
-    }, 500);
+      document.querySelector(".war-declared").textContent = "WAR";
+    }, 700);
     document.querySelector(".match button").disabled = true;
     setTimeout(() => {
       war();
-    }, 1500);
+    }, 2000);
   }
 };
 
@@ -463,7 +464,7 @@ const compareWarCards = (player, computer) => {
     updateScore();
     warArray = [];
     return;
-  } else document.querySelector(".war-winner").textContent = "WAR!";
+  } else document.querySelector(".war-again").textContent = "WAR";
   setTimeout(() => {
     war();
   }, 1500);
@@ -477,6 +478,7 @@ const endWar = () => {
     warScreen.classList.remove("fadeIn");
     matchScreen.classList.add("fadeIn");
     document.querySelector(".war-winner").textContent = "";
+    document.querySelector(".war-again").textContent = "";
     document.querySelector(".winner p").textContent = "";
     document.querySelector(".player-card").classList.remove("active");
     document.querySelector(".computer-card").classList.remove("active");
@@ -511,10 +513,10 @@ const displayWinner = () => {
 
 const declareWinner = () => {
   const winnerText = document.querySelector(".winner-display p");
-  if (playerScore === 0) {
+  if (playerHand.length === 0) {
     winnerText.textContent = "Game Over. Computer Wins!";
     displayWinner();
-  } else if (computerScore === 0) {
+  } else if (computerHand.length === 0) {
     winnerText.textContent = "Game Over. Player Wins!";
     displayWinner();
   }

@@ -16,12 +16,11 @@
     <title>War</title>
   </head>
   <body>
-    <div class="header fadeOut">
-      <h1>War</h1>
-    </div>
-
     <section class="game">
       <div class="wrapper">
+        <div class="header fadeOut">
+          <h1>War</h1>
+        </div>
         <div class="score fadeOut">
           <div class="player-score">
             <h3>Player</h3>
@@ -95,7 +94,10 @@
           </div>
           <div class="center">
             <button class="flip-button">Flip</button>
-            <div class="winner"><p></p></div>
+            <div class="winner">
+              <p class="match-winner"></p>
+              <p class="war-declared"></p>
+            </div>
           </div>
           <div class="card-container computer-card-container">
             <div class="card computer-card">
@@ -160,6 +162,7 @@
               <p class="war-description"></p>
               <p class="war-countdown"></p>
               <p class="war-winner"></p>
+              <p class="war-again"></p>
             </div>
           </div>
           <div class="war-container">
@@ -197,6 +200,11 @@
         </div>
       </div>
     </section>
+    <footer>
+      <p>
+        © 2019 Gabe Kugelmass
+      </p>
+    </footer>
     <script src="war-app.js"></script>
   </body>
 </html>

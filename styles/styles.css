@@ -567,8 +567,8 @@ div.fadeIn {
 
 @media (max-width: 420px) {
   .match {
-    -webkit-transform: translate(-50%, -60%);
-            transform: translate(-50%, -60%);
+    -webkit-transform: translate(-50%, -70%);
+            transform: translate(-50%, -70%);
   }
 }
 
@@ -599,7 +599,20 @@ div.fadeIn {
   }
 }
 
-.winner p {
+.war-declared {
+  color: #e0e0e0;
+  font-size: 15rem;
+  position: absolute;
+  font-family: "Black Ops One", sans-serif;
+  text-shadow: 2px 2px black;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+.match-winner {
   color: #e0e0e0;
   font-size: 2.5rem;
   padding-top: 50px;
@@ -608,7 +621,7 @@ div.fadeIn {
 }
 
 @media (max-width: 608px) {
-  .winner p {
+  .match-winner {
     font-size: 2rem;
     padding: 0;
   }
@@ -661,8 +674,8 @@ div.fadeIn {
 
 @media (max-width: 420px) {
   .war {
-    -webkit-transform: translate(-50%, -60%);
-            transform: translate(-50%, -60%);
+    -webkit-transform: translate(-50%, -70%);
+            transform: translate(-50%, -70%);
   }
 }
 
@@ -687,7 +700,28 @@ div.fadeIn {
 
 .war-countdown {
   color: #e0e0e0;
-  font-size: 5rem;
+  font-size: 30rem;
+  position: absolute;
+  font-family: 'Black Ops One', sans-serif;
+  text-shadow: 2px 2px black;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+.war-again {
+  color: #e0e0e0;
+  font-size: 15rem;
+  position: absolute;
+  font-family: 'Black Ops One', sans-serif;
+  text-shadow: 2px 2px black;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 9999;
 }
 
 .war-winner {
@@ -980,4 +1014,9 @@ div.fadeIn {
   color: #e0e0e0;
   font-size: 2.5rem;
   text-shadow: 0px 0px 5px black;
+}
+
+footer p {
+  color: white;
+  font-family: 'Black Ops One', sans-serif;
 }

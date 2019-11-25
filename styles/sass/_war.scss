@@ -23,7 +23,7 @@
     max-width: 80%;
   }
   @include small-phone {
-    transform: translate(-50%, -60%);
+    transform: translate(-50%, -70%);
   }
 }
 
@@ -43,7 +43,26 @@
 
 .war-countdown {
   color: $offWhite;
-  font-size: 5rem;
+  font-size: 30rem;
+  position: absolute;
+  font-family: 'Black Ops One', sans-serif;
+  text-shadow: 2px 2px black;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 9999;
+}
+
+.war-again {
+  color: $offWhite;
+  font-size: 15rem;
+  position: absolute;
+  font-family: 'Black Ops One', sans-serif;
+  text-shadow: 2px 2px black;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 9999;
 }
 
 .war-winner {
