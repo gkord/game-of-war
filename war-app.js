@@ -18,7 +18,11 @@
 //Add both cards to the array of the winner ✔
 
 //-------WAR (Tie)-------
-//Create a function that splices next 3 cards in array then flips the 4th
+//Create a function that splices next 3 cards in array then flips the 4th ✔
+
+//RUNNING INTO AN ISSUE IF THERE IS WAR AND ONE PLAYER HAS LESS THAN 5 CARDS IN THEIR HAND
+//TRYING TO FIGURE OUT HOW TO BEST ERROR HANDLE THIS INSTANCE
+//FOR NOW, THE GAME BREAKS IN THIS SCENARIO
 
 let suits = ["Hearts", "Diamonds", "Spades", "Clubs"];
 let values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
@@ -97,20 +101,19 @@ const winnerScreen = document.querySelector(".winner-display");
 //select header for mobile and store in a variable
 const headerMobile = document.querySelector(".header");
 //select rules button and store in a variable
-const rulesBtn = document.querySelector(".rules-button")
+const rulesBtn = document.querySelector(".rules-button");
 //select close button and store in a variable
-const closeBtn = document.querySelector(".close-button")
+const closeBtn = document.querySelector(".close-button");
 //select rules screen and store in a variable
-const rulesScreen = document.querySelector('.rules-container')
-
+const rulesScreen = document.querySelector(".rules-container");
 
 //open rules
 const showRules = () => {
   rulesBtn.addEventListener("click", () => {
-    introScreen.classList.add("hide")
-    rulesScreen.classList.add("fadeIn")
-  })
-}
+    introScreen.classList.add("hide");
+    rulesScreen.classList.add("fadeIn");
+  });
+};
 showRules();
 
 const closeRules = () => {
@@ -118,20 +121,19 @@ const closeRules = () => {
     rulesScreen.classList.remove("fadeIn");
     introScreen.classList.remove("hide");
     introScreen.classList.add("fadeIn");
-  })
-}
-closeRules()
+  });
+};
+closeRules();
 
 //start our game
 const startGame = () => {
   //create event listener for playBtn
   playBtn.addEventListener("click", () => {
     introScreen.classList.add("fadeOut");
-    introScreen.classList.remove("fadeIn")
+    introScreen.classList.remove("fadeIn");
     matchScreen.classList.add("fadeIn");
     scoreBoard.classList.add("fadeIn");
     headerMobile.classList.add("fadeIn");
-
   });
 };
 
@@ -239,7 +241,6 @@ const playGame = () => {
       document.querySelector(".war-declared").textContent = "";
     }, 1500);
     compareCards(playerHand[0].value, computerHand[0].value);
-    // console.log(playerHand.length, computerHand.length);
   });
 };
 
@@ -296,9 +297,17 @@ const compareCards = (player, computer) => {
 warArray = [];
 
 const createWarArray = () => {
-  warArray = warArray.concat(playerHand.splice(0, 4));
+  //if not able to draw 4 cards, draw as many as possible
+  if (playerHand.length <= 4) {
+    warArray = warArray.concat(playerHand.splice(0, playerHand.length - 1));
+    warArray = warArray.concat(computerHand.splice(0, 4));
+    console.log(warArray);
+  } else if (computerHand.length <= 4) {
+    warArray = warArray.concat(computerHand.splice(0, computerHand.length - 1));
+    warArray = warArray.concat(playerHand.splice(0, 4));
+    console.log(warArray);
+  } else warArray = warArray.concat(playerHand.splice(0, 4));
   warArray = warArray.concat(computerHand.splice(0, 4));
-  // console.log(warArray);
 };
 
 //function that displays suit and value in playerHand array to card
